@@ -1,6 +1,6 @@
 #![cfg(feature = "sol-types")]
 
-use alloy_core::sol;
+use linera_alloy_core::sol;
 
 sol! {
     struct MyStruct {

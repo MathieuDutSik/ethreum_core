@@ -4,7 +4,7 @@
 
 #![no_std]
 
-use alloy_core::sol;
+use linera_alloy_core::sol;
 
 type _MyUint = sol!(uint32);
 type _MyTuple = sol!((_MyUint, bytes, bool, string, bytes32, (address, uint64)));

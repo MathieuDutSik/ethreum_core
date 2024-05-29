@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Documentation
 
-- Update alloy-core homepage link
+- Update linera-alloy-core homepage link
 
 ### Features
 
@@ -185,14 +185,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Documentation
 
-- Update alloy_core::sol reference to real sol ([#529](https://github.com/alloy-rs/core/issues/529))
-- Mention `alloy-core` meta crate in README.md overview ([#523](https://github.com/alloy-rs/core/issues/523))
+- Update linera_alloy_core::sol reference to real sol ([#529](https://github.com/alloy-rs/core/issues/529))
+- Mention `linera-alloy-core` meta crate in README.md overview ([#523](https://github.com/alloy-rs/core/issues/523))
 
 ### Features
 
 - [primitives] Add some more implementations to Bytes ([#528](https://github.com/alloy-rs/core/issues/528))
 - [sol-macro] Provide a way to override import paths for dependencies ([#527](https://github.com/alloy-rs/core/issues/527))
-- Add `alloy-core` prelude crate ([#521](https://github.com/alloy-rs/core/issues/521))
+- Add `linera-alloy-core` prelude crate ([#521](https://github.com/alloy-rs/core/issues/521))
 - [sol-types] Constify type name formatting ([#520](https://github.com/alloy-rs/core/issues/520))
 - [sol-macro] Add `#[sol(rpc)]` to generate type-safe provider contract calls ([#510](https://github.com/alloy-rs/core/issues/510))
 - [sol-macro] Expand state variable getters in contracts ([#514](https://github.com/alloy-rs/core/issues/514))

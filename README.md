@@ -22,7 +22,7 @@ feature-parity in Alloy. No action is currently needed from devs.
 
 This repository contains the following crates:
 
-- [`alloy-core`]: Meta-crate for the entire project
+- [`linera-alloy-core`]: Meta-crate for the entire project
 - [`alloy-primitives`] - Primitive integer and byte types
 - [`alloy-sol-types`] - Compile-time [ABI] and [EIP-712] implementations
 - [`alloy-sol-macro`] - The [`sol!`] procedural macro
@@ -31,7 +31,7 @@ This repository contains the following crates:
 - [`alloy-sol-type-parser`] - A simple parser for Solidity type strings
 - [`syn-solidity`] - [`syn`]-powered Solidity parser
 
-[`alloy-core`]: https://github.com/alloy-rs/core/tree/main/crates/core
+[`linera-alloy-core`]: https://github.com/alloy-rs/core/tree/main/crates/core
 [`alloy-primitives`]: https://github.com/alloy-rs/core/tree/main/crates/primitives
 [`alloy-sol-types`]: https://github.com/alloy-rs/core/tree/main/crates/sol-types
 [`alloy-sol-macro`]: https://github.com/alloy-rs/core/tree/main/crates/sol-macro
@@ -79,7 +79,7 @@ When building for the `wasm32-unknown-unknown` target and the `"getrandom"`
 feature is enabled, compilation for the `getrandom` crate will fail. This is
 expected: see [their documentation][getrandom] for more details.
 
-To fix this, either disable the `"getrandom"` feature on `alloy-core` or add
+To fix this, either disable the `"getrandom"` feature on `linera-alloy-core` or add
 `getrandom` to your dependencies with the `"js"` feature enabled:
 
 ```toml

@@ -83,7 +83,7 @@ pub struct SolAttrs {
     /// `#[sol(docs)]`
     pub docs: Option<bool>,
 
-    /// `#[sol(alloy_sol_types = alloy_core::sol_types)]`
+    /// `#[sol(alloy_sol_types = linera_alloy_core::sol_types)]`
     pub alloy_sol_types: Option<Path>,
     /// `#[sol(alloy_contract = alloy_contract)]`
     pub alloy_contract: Option<Path>,
@@ -400,8 +400,8 @@ mod tests {
             #[sol(rpc = false)] => Ok(sol_attrs! { rpc: false }),
 
             #[sol(alloy_sol_types)] => Err("expected `=`"),
-            #[sol(alloy_sol_types = alloy_core::sol_types)] => Ok(sol_attrs! { alloy_sol_types: parse_quote!(alloy_core::sol_types) }),
-            #[sol(alloy_sol_types = ::alloy_core::sol_types)] => Ok(sol_attrs! { alloy_sol_types: parse_quote!(::alloy_core::sol_types) }),
+            #[sol(alloy_sol_types = linera_alloy_core::sol_types)] => Ok(sol_attrs! { alloy_sol_types: parse_quote!(linera_alloy_core::sol_types) }),
+            #[sol(alloy_sol_types = ::linera_alloy_core::sol_types)] => Ok(sol_attrs! { alloy_sol_types: parse_quote!(::linera_alloy_core::sol_types) }),
             #[sol(alloy_sol_types = alloy::sol_types)] => Ok(sol_attrs! { alloy_sol_types: parse_quote!(alloy::sol_types) }),
             #[sol(alloy_sol_types = ::alloy::sol_types)] => Ok(sol_attrs! { alloy_sol_types: parse_quote!(::alloy::sol_types) }),
 

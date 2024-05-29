@@ -1,5 +1,5 @@
 [package]
-name = "alloy-core-sol-test"
+name = "linera-alloy-core-sol-test"
 publish = false
 
 version.workspace = true
@@ -11,4 +11,4 @@ repository.workspace = true
 exclude.workspace = true
 
 [dependencies]
-alloy-core = { workspace = true, features = ["sol-types", "json"] }
+linera-alloy-core = { workspace = true, features = ["sol-types", "json"] }
