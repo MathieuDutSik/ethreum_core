@@ -298,16 +298,16 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
                 quote! {
                     #deploy_doc
                     #[inline]
-                    pub fn deploy<T: alloy_contract::private::Transport + ::core::clone::Clone, P: alloy_contract::private::Provider<T, N>, N: alloy_contract::private::Network>(provider: P, #params)
-                        -> impl ::core::future::Future<Output = alloy_contract::Result<#name<T, P, N>>>
+                    pub fn deploy<T: linera_alloy_contract::private::Transport + ::core::clone::Clone, P: linera_alloy_contract::private::Provider<T, N>, N: linera_alloy_contract::private::Network>(provider: P, #params)
+                        -> impl ::core::future::Future<Output = linera_alloy_contract::Result<#name<T, P, N>>>
                     {
                         #name::<T, P, N>::deploy(provider, #args)
                     }
 
                     #deploy_builder_doc
                     #[inline]
-                    pub fn deploy_builder<T: alloy_contract::private::Transport + ::core::clone::Clone, P: alloy_contract::private::Provider<T, N>, N: alloy_contract::private::Network>(provider: P, #params)
-                        -> alloy_contract::RawCallBuilder<T, P, N>
+                    pub fn deploy_builder<T: linera_alloy_contract::private::Transport + ::core::clone::Clone, P: linera_alloy_contract::private::Provider<T, N>, N: linera_alloy_contract::private::Network>(provider: P, #params)
+                        -> linera_alloy_contract::RawCallBuilder<T, P, N>
                     {
                         #name::<T, P, N>::deploy_builder(provider, #args)
                     }
@@ -316,7 +316,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
                     #deploy_doc
                     #[inline]
                     pub async fn deploy(provider: P, #params)
-                        -> alloy_contract::Result<#name<T, P, N>>
+                        -> linera_alloy_contract::Result<#name<T, P, N>>
                     {
                         let call_builder = Self::deploy_builder(provider, #args);
                         let contract_address = call_builder.deploy().await?;
@@ -326,9 +326,9 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
                     #deploy_builder_doc
                     #[inline]
                     pub fn deploy_builder(provider: P, #params)
-                        -> alloy_contract::RawCallBuilder<T, P, N>
+                        -> linera_alloy_contract::RawCallBuilder<T, P, N>
                     {
-                        alloy_contract::RawCallBuilder::new_raw_deploy(provider, #deploy_builder_data)
+                        linera_alloy_contract::RawCallBuilder::new_raw_deploy(provider, #deploy_builder_data)
                     }
                 },
             )
@@ -342,17 +342,17 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
             );
             quote! {
                 #[doc = #doc]
-                pub fn #name(&self) -> alloy_contract::Event<T, &P, #event_name, N> {
+                pub fn #name(&self) -> linera_alloy_contract::Event<T, &P, #event_name, N> {
                     self.event_filter::<#event_name>()
                 }
             }
         });
 
-        let alloy_contract = &cx.crates.contract;
-        let generics_t_p_n = quote!(<T: alloy_contract::private::Transport + ::core::clone::Clone, P: alloy_contract::private::Provider<T, N>, N: alloy_contract::private::Network>);
+        let linera_alloy_contract = &cx.crates.contract;
+        let generics_t_p_n = quote!(<T: linera_alloy_contract::private::Transport + ::core::clone::Clone, P: linera_alloy_contract::private::Provider<T, N>, N: linera_alloy_contract::private::Network>);
 
         quote! {
-            use #alloy_contract as alloy_contract;
+            use #linera_alloy_contract as linera_alloy_contract;
 
             #[doc = #new_fn_doc]
             #[inline]
@@ -367,7 +367,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
 
             #[doc = #struct_doc]
             #[derive(Clone)]
-            pub struct #name<T, P, N = alloy_contract::private::Ethereum> {
+            pub struct #name<T, P, N = linera_alloy_contract::private::Ethereum> {
                 address: linera_alloy_sol_types::private::Address,
                 provider: P,
                 _network_transport: ::core::marker::PhantomData<(N, T)>,
@@ -433,9 +433,9 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
                 /// Note that the call can be any function call, not just those defined in this
                 /// contract. Prefer using the other methods for building type-safe contract calls.
                 pub fn call_builder<C: linera_alloy_sol_types::SolCall>(&self, call: &C)
-                    -> alloy_contract::SolCallBuilder<T, &P, C, N>
+                    -> linera_alloy_contract::SolCallBuilder<T, &P, C, N>
                 {
-                    alloy_contract::SolCallBuilder::new_sol(&self.provider, &self.address, call)
+                    linera_alloy_contract::SolCallBuilder::new_sol(&self.provider, &self.address, call)
                 }
 
                 #(#methods)*
@@ -449,9 +449,9 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
                 /// Note that the type can be any event, not just those defined in this contract.
                 /// Prefer using the other methods for building type-safe event filters.
                 pub fn event_filter<E: linera_alloy_sol_types::SolEvent>(&self)
-                    -> alloy_contract::Event<T, &P, E, N>
+                    -> linera_alloy_contract::Event<T, &P, E, N>
                 {
-                    alloy_contract::Event::new_sol(&self.provider, &self.address)
+                    linera_alloy_contract::Event::new_sol(&self.provider, &self.address)
                 }
 
                 #(#filter_methods)*
@@ -937,7 +937,7 @@ fn call_builder_method(f: &ItemFunction, cx: &ExpCtxt<'_>) -> TokenStream {
     let doc = format!("Creates a new call builder for the [`{name}`] function.");
     quote! {
         #[doc = #doc]
-        pub fn #name(&self, #(#param_names1: #param_tys),*) -> alloy_contract::SolCallBuilder<T, &P, #call_name, N> {
+        pub fn #name(&self, #(#param_names1: #param_tys),*) -> linera_alloy_contract::SolCallBuilder<T, &P, #call_name, N> {
             self.call_builder(&#call_name { #(#param_names2),* })
         }
     }

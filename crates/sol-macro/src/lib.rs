@@ -132,7 +132,7 @@ use syn::parse_macro_input;
 ///     [`linera-alloy-sol-types`] traits
 /// - `linera_alloy_sol_types = <path = ::linera_alloy_sol_types>` (inner attribute only): specifies the path to
 ///   the required dependency [`linera-alloy-sol-types`].
-/// - `alloy_contract = <path = ::alloy_contract>` (inner attribute only): specifies the path to the
+/// - `linera_alloy_contract = <path = ::linera_alloy_contract>` (inner attribute only): specifies the path to the
 ///   optional dependency [`alloy-contract`]. This is only used by the `rpc` attribute.
 /// - `all_derives [ = <bool = false>]`: adds all possible `#[derive(...)]` attributes to all
 ///   generated types. May significantly increase compile times due to all the extra generated code.
