@@ -1,12 +1,12 @@
 use crate::{DynSolType, DynSolValue, Error, Result};
 use alloc::vec::Vec;
-use alloy_primitives::Selector;
-use alloy_sol_types::SolError;
+use linera_alloy_primitives::Selector;
+use linera_alloy_sol_types::SolError;
 
-/// See [alloy_sol_types::Panic] for signature details.
-const PANIC_SELECTOR: Selector = Selector::new(alloy_sol_types::Panic::SELECTOR);
-/// See [alloy_sol_types::Revert] for signature details.
-const REVERT_SELECTOR: Selector = Selector::new(alloy_sol_types::Revert::SELECTOR);
+/// See [linera_alloy_sol_types::Panic] for signature details.
+const PANIC_SELECTOR: Selector = Selector::new(linera_alloy_sol_types::Panic::SELECTOR);
+/// See [linera_alloy_sol_types::Revert] for signature details.
+const REVERT_SELECTOR: Selector = Selector::new(linera_alloy_sol_types::Revert::SELECTOR);
 
 /// A dynamic ABI error.
 ///
@@ -25,7 +25,7 @@ impl DynSolError {
     /// `revert(reason)` or `require(condition, reason)` statements in Solidity.
     ///
     /// **Note**: Usage of this instantiator is not recommended. It is better to
-    /// use [alloy_sol_types::Revert] in almost all cases.
+    /// use [linera_alloy_sol_types::Revert] in almost all cases.
     pub fn revert() -> Self {
         Self { selector: REVERT_SELECTOR, body: DynSolType::Tuple(vec![DynSolType::String]) }
     }
@@ -33,7 +33,7 @@ impl DynSolError {
     /// A [Solidity panic].
     ///
     /// **Note**: Usage of this instantiator is not recommended. It is better to
-    /// use [alloy_sol_types::Panic] in almost all cases.
+    /// use [linera_alloy_sol_types::Panic] in almost all cases.
     ///
     /// These are thrown by `assert(condition)` and by internal Solidity checks,
     /// such as arithmetic overflow or array bounds checks.
@@ -41,7 +41,7 @@ impl DynSolError {
     /// The list of all known panic codes can be found in the [PanicKind] enum.
     ///
     /// [Solidity panic]: https://docs.soliditylang.org/en/latest/control-structures.html#panic-via-assert-and-error-via-require
-    /// [PanicKind]: alloy_sol_types::PanicKind
+    /// [PanicKind]: linera_alloy_sol_types::PanicKind
     pub fn panic() -> Self {
         Self { selector: PANIC_SELECTOR, body: DynSolType::Tuple(vec![DynSolType::Uint(256)]) }
     }
@@ -103,7 +103,7 @@ pub struct DecodedError {
 mod test {
     use super::DynSolError;
     use crate::DynSolValue;
-    use alloy_primitives::hex;
+    use linera_alloy_primitives::hex;
 
     #[test]
     fn decode_revert_message() {
@@ -120,6 +120,6 @@ mod test {
         let data = hex!("4e487b710000000000000000000000000000000000000000000000000000000000000001");
 
         let decoded = error.decode_error(&data).unwrap();
-        assert_eq!(decoded.body, vec![DynSolValue::Uint(alloy_primitives::Uint::from(1), 256)]);
+        assert_eq!(decoded.body, vec![DynSolValue::Uint(linera_alloy_primitives::Uint::from(1), 256)]);
     }
 }

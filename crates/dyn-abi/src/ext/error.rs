@@ -1,11 +1,11 @@
 use crate::{DynSolError, Specifier};
 use alloc::vec::Vec;
-use alloy_json_abi::Error;
-use alloy_primitives::{keccak256, Selector};
+use linera_alloy_json_abi::Error;
+use linera_alloy_primitives::{keccak256, Selector};
 
 mod sealed {
     pub trait Sealed {}
-    impl Sealed for alloy_json_abi::Error {}
+    impl Sealed for linera_alloy_json_abi::Error {}
 }
 use sealed::Sealed;
 
@@ -29,7 +29,7 @@ pub trait ErrorExt: Sealed {
     fn decode_error(&self, data: &[u8]) -> crate::Result<crate::DecodedError>;
 }
 
-impl ErrorExt for alloy_json_abi::Error {
+impl ErrorExt for linera_alloy_json_abi::Error {
     fn decode_error(&self, data: &[u8]) -> crate::Result<crate::DecodedError> {
         self.resolve()?.decode_error(data)
     }

@@ -1,6 +1,6 @@
-use alloy_json_abi::{Function, JsonAbi, Param, StateMutability};
-use alloy_primitives::{Address, B256, I256, U256};
-use alloy_sol_types::{sol, SolCall, SolError, SolEvent, SolStruct};
+use linera_alloy_json_abi::{Function, JsonAbi, Param, StateMutability};
+use linera_alloy_primitives::{Address, B256, I256, U256};
+use linera_alloy_sol_types::{sol, SolCall, SolError, SolEvent, SolStruct};
 use pretty_assertions::assert_eq;
 use std::borrow::Cow;
 

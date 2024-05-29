@@ -1,6 +1,6 @@
-//! Tests `#[sol(alloy_sol_types = ...)]`.
+//! Tests `#[sol(linera_alloy_sol_types = ...)]`.
 //!
-//! This has to be in a separate crate where `alloy_sol_types` is not provided as a dependency.
+//! This has to be in a separate crate where `linera_alloy_sol_types` is not provided as a dependency.
 
 #![no_std]
 

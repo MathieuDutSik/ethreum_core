@@ -1,6 +1,6 @@
 use crate::{abi::token::WordToken, sol_data::*, SolType};
 use alloc::vec::Vec;
-use alloy_primitives::keccak256;
+use linera_alloy_primitives::keccak256;
 
 /// A Solidity event topic.
 ///

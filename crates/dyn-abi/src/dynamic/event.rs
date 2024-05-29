@@ -1,6 +1,6 @@
 use crate::{DynSolType, DynSolValue, Error, Result};
 use alloc::vec::Vec;
-use alloy_primitives::{LogData, B256};
+use linera_alloy_primitives::{LogData, B256};
 
 /// A dynamic ABI event.
 ///
@@ -138,7 +138,7 @@ pub struct DecodedEvent {
 
 #[cfg(test)]
 mod test {
-    use alloy_primitives::{address, b256, bytes, U256};
+    use linera_alloy_primitives::{address, b256, bytes, U256};
 
     use super::*;
 

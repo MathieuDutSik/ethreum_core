@@ -1,8 +1,8 @@
 #![allow(unknown_lints, clippy::incompatible_msrv)]
 
-use alloy_dyn_abi::{DynSolType, DynSolValue};
-use alloy_primitives::{hex, U256};
-use alloy_sol_types::{sol, sol_data, SolType, SolValue};
+use linera_alloy_dyn_abi::{DynSolType, DynSolValue};
+use linera_alloy_primitives::{hex, U256};
+use linera_alloy_sol_types::{sol, sol_data, SolType, SolValue};
 use criterion::{
     criterion_group, criterion_main, measurement::WallTime, BenchmarkGroup, Criterion,
 };

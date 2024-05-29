@@ -1,5 +1,5 @@
 use crate::{SolInput, SolInputKind};
-use alloy_json_abi::{ContractObject, JsonAbi, ToSolConfig};
+use linera_alloy_json_abi::{ContractObject, JsonAbi, ToSolConfig};
 use proc_macro2::{Ident, TokenStream};
 use quote::{quote, TokenStreamExt};
 use syn::Result;

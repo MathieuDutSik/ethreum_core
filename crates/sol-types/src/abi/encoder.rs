@@ -220,8 +220,8 @@ const fn tuple_from_ref<T>(s: &T) -> &(T,) {
 mod tests {
     use crate::{sol_data, SolType};
     use alloc::{borrow::ToOwned, string::ToString, vec::Vec};
-    use alloy_primitives::{address, bytes, hex, Address, U256};
-    use alloy_sol_macro::sol;
+    use linera_alloy_primitives::{address, bytes, hex, Address, U256};
+    use linera_alloy_sol_macro::sol;
 
     #[test]
     fn encode_address() {

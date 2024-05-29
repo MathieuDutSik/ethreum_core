@@ -7,7 +7,7 @@ use proc_macro_error::abort;
 use quote::{quote_spanned, ToTokens};
 use std::{fmt, num::NonZeroU16};
 
-/// Expands a single [`Type`] recursively to its `alloy_sol_types::sol_data`
+/// Expands a single [`Type`] recursively to its `linera_alloy_sol_types::sol_data`
 /// equivalent.
 pub fn expand_type(ty: &Type, crates: &ExternCrates) -> TokenStream {
     let mut tokens = TokenStream::new();
@@ -28,17 +28,17 @@ pub fn expand_rust_type(ty: &Type, crates: &ExternCrates) -> TokenStream {
 
 /// The [`expand_type`] recursive implementation.
 pub fn rec_expand_type(ty: &Type, crates: &ExternCrates, tokens: &mut TokenStream) {
-    let alloy_sol_types = &crates.sol_types;
+    let linera_alloy_sol_types = &crates.sol_types;
     let tts = match *ty {
-        Type::Address(span, _) => quote_spanned! {span=> #alloy_sol_types::sol_data::Address },
-        Type::Bool(span) => quote_spanned! {span=> #alloy_sol_types::sol_data::Bool },
-        Type::String(span) => quote_spanned! {span=> #alloy_sol_types::sol_data::String },
-        Type::Bytes(span) => quote_spanned! {span=> #alloy_sol_types::sol_data::Bytes },
+        Type::Address(span, _) => quote_spanned! {span=> #linera_alloy_sol_types::sol_data::Address },
+        Type::Bool(span) => quote_spanned! {span=> #linera_alloy_sol_types::sol_data::Bool },
+        Type::String(span) => quote_spanned! {span=> #linera_alloy_sol_types::sol_data::String },
+        Type::Bytes(span) => quote_spanned! {span=> #linera_alloy_sol_types::sol_data::Bytes },
 
         Type::FixedBytes(span, size) => {
             assert!(size.get() <= 32);
             let size = Literal::u16_unsuffixed(size.get());
-            quote_spanned! {span=> #alloy_sol_types::sol_data::FixedBytes<#size> }
+            quote_spanned! {span=> #linera_alloy_sol_types::sol_data::FixedBytes<#size> }
         }
         Type::Int(span, size) | Type::Uint(span, size) => {
             let name = match ty {
@@ -52,7 +52,7 @@ pub fn rec_expand_type(ty: &Type, crates: &ExternCrates, tokens: &mut TokenStrea
             assert!(size <= 256 && size % 8 == 0);
             let size = Literal::u16_unsuffixed(size);
 
-            quote_spanned! {span=> #alloy_sol_types::sol_data::#name<#size> }
+            quote_spanned! {span=> #linera_alloy_sol_types::sol_data::#name<#size> }
         }
 
         Type::Tuple(ref tuple) => {
@@ -68,13 +68,13 @@ pub fn rec_expand_type(ty: &Type, crates: &ExternCrates, tokens: &mut TokenStrea
             let ty = expand_type(&array.ty, crates);
             let span = array.span();
             if let Some(size) = array.size() {
-                quote_spanned! {span=> #alloy_sol_types::sol_data::FixedArray<#ty, #size> }
+                quote_spanned! {span=> #linera_alloy_sol_types::sol_data::FixedArray<#ty, #size> }
             } else {
-                quote_spanned! {span=> #alloy_sol_types::sol_data::Array<#ty> }
+                quote_spanned! {span=> #linera_alloy_sol_types::sol_data::Array<#ty> }
             }
         }
         Type::Function(ref function) => quote_spanned! {function.span()=>
-            #alloy_sol_types::sol_data::Function
+            #linera_alloy_sol_types::sol_data::Function
         },
         Type::Mapping(ref mapping) => quote_spanned! {mapping.span()=>
             ::core::compile_error!("Mapping types are not supported here")
@@ -94,17 +94,17 @@ pub fn rec_expand_rust_type(ty: &Type, crates: &ExternCrates, tokens: &mut Token
         matches!(size.map_or(256, NonZeroU16::get), 8 | 16 | 32 | 64 | 128 | 256)
     }
 
-    let alloy_sol_types = &crates.sol_types;
+    let linera_alloy_sol_types = &crates.sol_types;
     let tts = match *ty {
-        Type::Address(span, _) => quote_spanned! {span=> #alloy_sol_types::private::Address },
+        Type::Address(span, _) => quote_spanned! {span=> #linera_alloy_sol_types::private::Address },
         Type::Bool(span) => return Ident::new("bool", span).to_tokens(tokens),
-        Type::String(span) => quote_spanned! {span=> #alloy_sol_types::private::String },
-        Type::Bytes(span) => quote_spanned! {span=> #alloy_sol_types::private::Bytes },
+        Type::String(span) => quote_spanned! {span=> #linera_alloy_sol_types::private::String },
+        Type::Bytes(span) => quote_spanned! {span=> #linera_alloy_sol_types::private::Bytes },
 
         Type::FixedBytes(span, size) => {
             assert!(size.get() <= 32);
             let size = Literal::u16_unsuffixed(size.get());
-            quote_spanned! {span=> #alloy_sol_types::private::FixedBytes<#size> }
+            quote_spanned! {span=> #linera_alloy_sol_types::private::FixedBytes<#size> }
         }
         Type::Int(span, size) | Type::Uint(span, size) if allowed_int_size(size) => {
             let size = size.map_or(256, NonZeroU16::get);
@@ -118,8 +118,8 @@ pub fn rec_expand_rust_type(ty: &Type, crates: &ExternCrates, tokens: &mut Token
             }
             assert_eq!(size, 256);
             match ty {
-                Type::Int(..) => quote_spanned! {span=> #alloy_sol_types::private::I256 },
-                Type::Uint(..) => quote_spanned! {span=> #alloy_sol_types::private::U256 },
+                Type::Int(..) => quote_spanned! {span=> #linera_alloy_sol_types::private::I256 },
+                Type::Uint(..) => quote_spanned! {span=> #linera_alloy_sol_types::private::U256 },
                 _ => unreachable!(),
             }
         }
@@ -139,11 +139,11 @@ pub fn rec_expand_rust_type(ty: &Type, crates: &ExternCrates, tokens: &mut Token
             if let Some(size) = array.size() {
                 quote_spanned! {span=> [#ty; #size] }
             } else {
-                quote_spanned! {span=> #alloy_sol_types::private::Vec<#ty> }
+                quote_spanned! {span=> #linera_alloy_sol_types::private::Vec<#ty> }
             }
         }
         Type::Function(ref function) => quote_spanned! {function.span()=>
-            #alloy_sol_types::private::Function
+            #linera_alloy_sol_types::private::Function
         },
         Type::Mapping(ref mapping) => quote_spanned! {mapping.span()=>
             ::core::compile_error!("Mapping types are not supported here")
@@ -153,7 +153,7 @@ pub fn rec_expand_rust_type(ty: &Type, crates: &ExternCrates, tokens: &mut Token
         ref ty @ (Type::Int(..) | Type::Uint(..) | Type::Custom(_)) => {
             let span = ty.span();
             let ty = expand_type(ty, crates);
-            quote_spanned! {span=> <#ty as #alloy_sol_types::SolType>::RustType }
+            quote_spanned! {span=> <#ty as #linera_alloy_sol_types::SolType>::RustType }
         }
     };
     tokens.extend(tts);

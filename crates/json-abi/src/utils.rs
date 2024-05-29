@@ -3,7 +3,7 @@ use alloc::{
     string::{String, ToString},
     vec::Vec,
 };
-use alloy_primitives::Selector;
+use linera_alloy_primitives::Selector;
 use core::{fmt::Write, num::NonZeroUsize};
 use parser::{ParameterSpecifier, TypeSpecifier, TypeStem};
 
@@ -152,7 +152,7 @@ pub(crate) fn event_full_signature(name: &str, inputs: &[EventParam]) -> String 
 pub(crate) fn selector(preimage: &str) -> Selector {
     // SAFETY: splitting an array
     unsafe {
-        alloy_primitives::keccak256(preimage.as_bytes())
+        linera_alloy_primitives::keccak256(preimage.as_bytes())
             .0
             .get_unchecked(..4)
             .try_into()

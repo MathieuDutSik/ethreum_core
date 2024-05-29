@@ -8,8 +8,8 @@ use alloc::{
     string::{String, ToString},
     vec::Vec,
 };
-use alloy_primitives::{keccak256, B256};
-use alloy_sol_types::SolStruct;
+use linera_alloy_primitives::{keccak256, B256};
+use linera_alloy_sol_types::SolStruct;
 use core::{cmp::Ordering, fmt};
 use parser::{RootType, TypeSpecifier, TypeStem};
 use serde::{Deserialize, Deserializer, Serialize};
@@ -502,7 +502,7 @@ impl Resolver {
 mod tests {
     use super::*;
     use alloc::boxed::Box;
-    use alloy_sol_types::sol;
+    use linera_alloy_sol_types::sol;
 
     #[test]
     fn it_detects_cycles() {

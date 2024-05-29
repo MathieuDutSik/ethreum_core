@@ -4,7 +4,7 @@
 /// attribute.
 ///
 /// [`sol!`]: crate::sol
-/// [attr]: https://docs.rs/alloy-sol-macro/latest/alloy_sol_macro/macro.sol.html#attributes
+/// [attr]: https://docs.rs/linera-alloy-sol-macro/latest/linera_alloy_sol_macro/macro.sol.html#attributes
 pub trait JsonAbiExt {
     /// The ABI representation of this type.
     type Abi;

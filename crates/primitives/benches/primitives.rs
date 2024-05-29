@@ -1,6 +1,6 @@
 #![allow(unknown_lints, clippy::incompatible_msrv)]
 
-use alloy_primitives::{keccak256, Address, B256};
+use linera_alloy_primitives::{keccak256, Address, B256};
 use criterion::{criterion_group, criterion_main, Criterion};
 use std::hint::black_box;
 

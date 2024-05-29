@@ -1,4 +1,4 @@
-# alloy-dyn-abi
+# linera-alloy-dyn-abi
 
 Dynamic Solidity type encoder.
 
@@ -13,15 +13,15 @@ The dynamic encoder/decoder is significantly more expensive, especially for
 complex types. It is also significantly more error prone, as the mapping
 between solidity types and rust types is not enforced by the compiler.
 
-[abi]: https://docs.rs/alloy-sol-types
+[abi]: https://docs.rs/linera-alloy-sol-types
 
 ## Examples
 
 Basic usage:
 
 ```rust
-use alloy_dyn_abi::{DynSolType, DynSolValue};
-use alloy_primitives::hex;
+use linera_alloy_dyn_abi::{DynSolType, DynSolValue};
+use linera_alloy_primitives::hex;
 
 // parse a type from a string
 // note: eip712 `CustomStruct`s cannot be parsed this way.
@@ -42,7 +42,7 @@ assert_eq!(decoded, expected);
 // roundtrip
 let encoded = decoded.abi_encode();
 assert_eq!(encoded, my_data);
-# Ok::<(), alloy_dyn_abi::Error>(())
+# Ok::<(), linera_alloy_dyn_abi::Error>(())
 ```
 
 EIP-712:
@@ -62,7 +62,7 @@ The [`DynSolValue`] enum represents a solidity value, and describes the
 rust shapes of possible solidity values. It is similar to, but not
 equivalent to an enum over types used as [`crate::SolType::RustType`]. The
 [`DynToken`] enum represents an ABI token, and is equivalent to an enum over
-the types implementing the [`alloy_sol_types::abi::Token`] trait.
+the types implementing the [`linera_alloy_sol_types::abi::Token`] trait.
 
 Where the static encoding system encodes the expected type information into
 the Rust type system, the dynamic encoder/decoder encodes it as a concrete

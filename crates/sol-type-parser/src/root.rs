@@ -11,7 +11,7 @@ use winnow::{combinator::trace, PResult, Parser};
 /// # Examples
 ///
 /// ```
-/// # use alloy_sol_type_parser::RootType;
+/// # use linera_alloy_sol_type_parser::RootType;
 /// let root_type = RootType::parse("uint256")?;
 /// assert_eq!(root_type.span(), "uint256");
 ///
@@ -26,7 +26,7 @@ use winnow::{combinator::trace, PResult, Parser};
 ///
 /// // Input string might get modified
 /// assert_eq!(RootType::parse("uint")?.span(), "uint256");
-/// # Ok::<_, alloy_sol_type_parser::Error>(())
+/// # Ok::<_, linera_alloy_sol_type_parser::Error>(())
 /// ```
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct RootType<'a>(&'a str);

@@ -2,7 +2,7 @@
 
 use super::{anon_name, ty, ExpCtxt};
 use crate::utils::ExprArray;
-use alloy_sol_macro_input::{docs_str, mk_doc, ContainsSolAttrs};
+use linera_alloy_sol_macro_input::{docs_str, mk_doc, ContainsSolAttrs};
 use ast::{Item, ItemContract, ItemError, ItemEvent, ItemFunction, SolIdent, Spanned};
 use heck::ToSnakeCase;
 use proc_macro2::{Ident, TokenStream};
@@ -50,8 +50,8 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
             #[doc = #hex]
             /// ```
             #[rustfmt::skip]
-            pub static #name: alloy_sol_types::private::Bytes =
-                alloy_sol_types::private::Bytes::from_static(#lit_bytes);
+            pub static #name: linera_alloy_sol_types::private::Bytes =
+                linera_alloy_sol_types::private::Bytes::from_static(#lit_bytes);
         }
     });
     let deployed_bytecode = sol_attrs.deployed_bytecode.map(|lit| {
@@ -66,8 +66,8 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
             #[doc = #hex]
             /// ```
             #[rustfmt::skip]
-            pub static #name: alloy_sol_types::private::Bytes =
-                alloy_sol_types::private::Bytes::from_static(#lit_bytes);
+            pub static #name: linera_alloy_sol_types::private::Bytes =
+                linera_alloy_sol_types::private::Bytes::from_static(#lit_bytes);
         }
     });
 
@@ -178,10 +178,10 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
             let events_map = to_abi::events_map(&events, cx);
             let errors_map = to_abi::errors_map(&errors, cx);
             quote! {
-                /// Contains [dynamic ABI definitions](alloy_sol_types::private::alloy_json_abi) for [this contract](self).
+                /// Contains [dynamic ABI definitions](linera_alloy_sol_types::private::linera_alloy_json_abi) for [this contract](self).
                 pub mod abi {
                     use super::*;
-                    use alloy_sol_types::private::{alloy_json_abi as json, BTreeMap, Vec};
+                    use linera_alloy_sol_types::private::{linera_alloy_json_abi as json, BTreeMap, Vec};
 
                     /// Returns the ABI for [this contract](super).
                     pub fn contract() -> json::JsonAbi {
@@ -246,7 +246,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
              [`{contract_name}`](self) contract located at a given `address`, using a given\n\
              provider `P`.\n\
              \n\
-             If the contract bytecode is available (see the [`sol!`](alloy_sol_types::sol!)\n\
+             If the contract bytecode is available (see the [`sol!`](linera_alloy_sol_types::sol!)\n\
              documentation on how to provide it), the `deploy` and `deploy_builder` methods can\n\
              be used to deploy a new instance of the contract.\n\
              \n\
@@ -285,7 +285,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
                 quote! {
                     [
                         &BYTECODE[..],
-                        &alloy_sol_types::SolConstructor::abi_encode(&constructorCall { #args })[..]
+                        &linera_alloy_sol_types::SolConstructor::abi_encode(&constructorCall { #args })[..]
                     ].concat().into()
                 }
             } else {
@@ -357,7 +357,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
             #[doc = #new_fn_doc]
             #[inline]
             pub const fn new #generics_t_p_n(
-                address: alloy_sol_types::private::Address,
+                address: linera_alloy_sol_types::private::Address,
                 provider: P,
             ) -> #name<T, P, N> {
                 #name::<T, P, N>::new(address, provider)
@@ -368,7 +368,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
             #[doc = #struct_doc]
             #[derive(Clone)]
             pub struct #name<T, P, N = alloy_contract::private::Ethereum> {
-                address: alloy_sol_types::private::Address,
+                address: linera_alloy_sol_types::private::Address,
                 provider: P,
                 _network_transport: ::core::marker::PhantomData<(N, T)>,
             }
@@ -386,7 +386,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
             impl #generics_t_p_n #name<T, P, N> {
                 #[doc = #new_fn_doc]
                 #[inline]
-                pub const fn new(address: alloy_sol_types::private::Address, provider: P) -> Self {
+                pub const fn new(address: linera_alloy_sol_types::private::Address, provider: P) -> Self {
                     Self { address, provider, _network_transport: ::core::marker::PhantomData }
                 }
 
@@ -394,18 +394,18 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
 
                 /// Returns a reference to the address.
                 #[inline]
-                pub const fn address(&self) -> &alloy_sol_types::private::Address {
+                pub const fn address(&self) -> &linera_alloy_sol_types::private::Address {
                     &self.address
                 }
 
                 /// Sets the address.
                 #[inline]
-                pub fn set_address(&mut self, address: alloy_sol_types::private::Address) {
+                pub fn set_address(&mut self, address: linera_alloy_sol_types::private::Address) {
                     self.address = address;
                 }
 
                 /// Sets the address and returns `self`.
-                pub fn at(mut self, address: alloy_sol_types::private::Address) -> Self {
+                pub fn at(mut self, address: linera_alloy_sol_types::private::Address) -> Self {
                     self.set_address(address);
                     self
                 }
@@ -432,7 +432,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
                 ///
                 /// Note that the call can be any function call, not just those defined in this
                 /// contract. Prefer using the other methods for building type-safe contract calls.
-                pub fn call_builder<C: alloy_sol_types::SolCall>(&self, call: &C)
+                pub fn call_builder<C: linera_alloy_sol_types::SolCall>(&self, call: &C)
                     -> alloy_contract::SolCallBuilder<T, &P, C, N>
                 {
                     alloy_contract::SolCallBuilder::new_sol(&self.provider, &self.address, call)
@@ -448,7 +448,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
                 ///
                 /// Note that the type can be any event, not just those defined in this contract.
                 /// Prefer using the other methods for building type-safe event filters.
-                pub fn event_filter<E: alloy_sol_types::SolEvent>(&self)
+                pub fn event_filter<E: linera_alloy_sol_types::SolEvent>(&self)
                     -> alloy_contract::Event<T, &P, E, N>
                 {
                     alloy_contract::Event::new_sol(&self.provider, &self.address)
@@ -459,7 +459,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
         }
     });
 
-    let alloy_sol_types = &cx.crates.sol_types;
+    let linera_alloy_sol_types = &cx.crates.sol_types;
 
     let tokens = quote! {
         #mod_descr_doc
@@ -468,7 +468,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, contract: &ItemContract) -> Result<TokenS
         #[allow(non_camel_case_types, non_snake_case, clippy::style)]
         pub mod #name {
             use super::*;
-            use #alloy_sol_types as alloy_sol_types;
+            use #linera_alloy_sol_types as linera_alloy_sol_types;
 
             #bytecode
             #deployed_bytecode
@@ -669,7 +669,7 @@ impl<'a> CallLikeExpander<'a> {
             #def
 
             #[automatically_derived]
-            impl alloy_sol_types::SolInterface for #name {
+            impl linera_alloy_sol_types::SolInterface for #name {
                 const NAME: &'static str = #name_s;
                 const MIN_DATA_LENGTH: usize = #min_data_len;
                 const COUNT: usize = #count;
@@ -677,7 +677,7 @@ impl<'a> CallLikeExpander<'a> {
                 #[inline]
                 fn selector(&self) -> [u8; 4] {
                     match self {#(
-                        Self::#variants(_) => <#types as alloy_sol_types::#trait_>::SELECTOR,
+                        Self::#variants(_) => <#types as linera_alloy_sol_types::#trait_>::SELECTOR,
                     )*}
                 }
 
@@ -697,11 +697,11 @@ impl<'a> CallLikeExpander<'a> {
                     selector: [u8; 4],
                     data: &[u8],
                     validate: bool
-                )-> alloy_sol_types::Result<Self> {
-                    static DECODE_SHIMS: &[fn(&[u8], bool) -> alloy_sol_types::Result<#name>] = &[
+                )-> linera_alloy_sol_types::Result<Self> {
+                    static DECODE_SHIMS: &[fn(&[u8], bool) -> linera_alloy_sol_types::Result<#name>] = &[
                         #({
-                            fn #sorted_variants(data: &[u8], validate: bool) -> alloy_sol_types::Result<#name> {
-                                <#sorted_types as alloy_sol_types::#trait_>::abi_decode_raw(data, validate)
+                            fn #sorted_variants(data: &[u8], validate: bool) -> linera_alloy_sol_types::Result<#name> {
+                                <#sorted_types as linera_alloy_sol_types::#trait_>::abi_decode_raw(data, validate)
                                     .map(#name::#sorted_variants)
                             }
                             #sorted_variants
@@ -709,8 +709,8 @@ impl<'a> CallLikeExpander<'a> {
                     ];
 
                     let Ok(idx) = Self::SELECTORS.binary_search(&selector) else {
-                        return Err(alloy_sol_types::Error::unknown_selector(
-                            <Self as alloy_sol_types::SolInterface>::NAME,
+                        return Err(linera_alloy_sol_types::Error::unknown_selector(
+                            <Self as linera_alloy_sol_types::SolInterface>::NAME,
                             selector,
                         ));
                     };
@@ -722,15 +722,15 @@ impl<'a> CallLikeExpander<'a> {
                 fn abi_encoded_size(&self) -> usize {
                     match self {#(
                         Self::#variants(inner) =>
-                            <#types as alloy_sol_types::#trait_>::abi_encoded_size(inner),
+                            <#types as linera_alloy_sol_types::#trait_>::abi_encoded_size(inner),
                     )*}
                 }
 
                 #[inline]
-                fn abi_encode_raw(&self, out: &mut alloy_sol_types::private::Vec<u8>) {
+                fn abi_encode_raw(&self, out: &mut linera_alloy_sol_types::private::Vec<u8>) {
                     match self {#(
                         Self::#variants(inner) =>
-                            <#types as alloy_sol_types::#trait_>::abi_encode_raw(inner, out),
+                            <#types as linera_alloy_sol_types::#trait_>::abi_encode_raw(inner, out),
                     )*}
                 }
             }
@@ -755,9 +755,9 @@ impl<'a> CallLikeExpander<'a> {
 
         let e_name = |&e: &&ItemEvent| self.cx.overloaded_name(e.into());
         let err = quote! {
-            alloy_sol_types::private::Err(alloy_sol_types::Error::InvalidLog {
-                name: <Self as alloy_sol_types::SolEventInterface>::NAME,
-                log: alloy_sol_types::private::Box::new(alloy_sol_types::private::LogData::new_unchecked(
+            linera_alloy_sol_types::private::Err(linera_alloy_sol_types::Error::InvalidLog {
+                name: <Self as linera_alloy_sol_types::SolEventInterface>::NAME,
+                log: linera_alloy_sol_types::private::Box::new(linera_alloy_sol_types::private::LogData::new_unchecked(
                     topics.to_vec(),
                     data.to_vec().into(),
                 )),
@@ -770,8 +770,8 @@ impl<'a> CallLikeExpander<'a> {
             quote! {
                 match topics.first().copied() {
                     #(
-                        Some(<#variants as alloy_sol_types::#trait_>::SIGNATURE_HASH) =>
-                            #ret <#variants as alloy_sol_types::#trait_>::decode_raw_log(topics, data, validate)
+                        Some(<#variants as linera_alloy_sol_types::#trait_>::SIGNATURE_HASH) =>
+                            #ret <#variants as linera_alloy_sol_types::#trait_>::decode_raw_log(topics, data, validate)
                                 .map(Self::#variants),
                     )*
                     _ => { #ret_err }
@@ -782,7 +782,7 @@ impl<'a> CallLikeExpander<'a> {
             let variants = events.iter().filter(|e| e.is_anonymous()).map(e_name);
             quote! {
                 #(
-                    if let Ok(res) = <#variants as alloy_sol_types::#trait_>::decode_raw_log(topics, data, validate) {
+                    if let Ok(res) = <#variants as linera_alloy_sol_types::#trait_>::decode_raw_log(topics, data, validate) {
                         return Ok(Self::#variants(res));
                     }
                 )*
@@ -794,11 +794,11 @@ impl<'a> CallLikeExpander<'a> {
             #def
 
             #[automatically_derived]
-            impl alloy_sol_types::SolEventInterface for #name {
+            impl linera_alloy_sol_types::SolEventInterface for #name {
                 const NAME: &'static str = #name_s;
                 const COUNT: usize = #count;
 
-                fn decode_raw_log(topics: &[alloy_sol_types::Word], data: &[u8], validate: bool) -> alloy_sol_types::Result<Self> {
+                fn decode_raw_log(topics: &[linera_alloy_sol_types::Word], data: &[u8], validate: bool) -> linera_alloy_sol_types::Result<Self> {
                     #non_anon_impl
                     #anon_impl
                 }

@@ -29,11 +29,11 @@ impl<T: Verbatim> quote::ToTokens for ToTokensCompat<'_, T> {
 
 impl Verbatim for String {
     fn to_verbatim_tokens(&self, tokens: &mut TokenStream, crates: &ExternCrates) {
-        let alloy_sol_types = &crates.sol_types;
+        let linera_alloy_sol_types = &crates.sol_types;
         tokens.extend(if self.is_empty() {
-            quote!(#alloy_sol_types::private::String::new())
+            quote!(#linera_alloy_sol_types::private::String::new())
         } else {
-            quote!(#alloy_sol_types::private::ToOwned::to_owned(#self))
+            quote!(#linera_alloy_sol_types::private::ToOwned::to_owned(#self))
         })
     }
 }
@@ -54,25 +54,25 @@ impl Verbatim for usize {
 
 impl<T: Verbatim> Verbatim for Vec<T> {
     fn to_verbatim_tokens(&self, s: &mut TokenStream, crates: &ExternCrates) {
-        let alloy_sol_types = &crates.sol_types;
+        let linera_alloy_sol_types = &crates.sol_types;
         s.extend(if self.is_empty() {
-            quote!(#alloy_sol_types::private::Vec::new())
+            quote!(#linera_alloy_sol_types::private::Vec::new())
         } else {
             let iter = self.iter().map(|t| ToTokensCompat(t, crates));
-            quote!(#alloy_sol_types::private::vec![#(#iter),*])
+            quote!(#linera_alloy_sol_types::private::vec![#(#iter),*])
         });
     }
 }
 
 impl<K: Verbatim, V: Verbatim> Verbatim for BTreeMap<K, V> {
     fn to_verbatim_tokens(&self, s: &mut TokenStream, crates: &ExternCrates) {
-        let alloy_sol_types = &crates.sol_types;
+        let linera_alloy_sol_types = &crates.sol_types;
         s.extend(if self.is_empty() {
-            quote!(#alloy_sol_types::private::BTreeMap::new())
+            quote!(#linera_alloy_sol_types::private::BTreeMap::new())
         } else {
             let k = self.keys().map(|t| ToTokensCompat(t, crates));
             let v = self.values().map(|t| ToTokensCompat(t, crates));
-            quote!(#alloy_sol_types::private::BTreeMap::from([#( (#k, #v) ),*]))
+            quote!(#linera_alloy_sol_types::private::BTreeMap::from([#( (#k, #v) ),*]))
         });
     }
 }
@@ -95,15 +95,15 @@ macro_rules! derive_verbatim {
     () => {};
 
     (struct $name:ident { $($field:ident),* $(,)? } $($rest:tt)*) => {
-        impl Verbatim for alloy_json_abi::$name {
+        impl Verbatim for linera_alloy_json_abi::$name {
             fn to_verbatim_tokens(&self, s: &mut TokenStream, crates: &ExternCrates) {
                 let Self { $($field),* } = self;
                 $(
                     let $field = ToTokensCompat($field, crates);
                 )*
-                let alloy_sol_types = &crates.sol_types;
+                let linera_alloy_sol_types = &crates.sol_types;
                 s.extend(quote! {
-                    #alloy_sol_types::private::alloy_json_abi::$name {
+                    #linera_alloy_sol_types::private::linera_alloy_json_abi::$name {
                         $($field: #$field,)*
                     }
                 });
@@ -113,16 +113,16 @@ macro_rules! derive_verbatim {
     };
 
     (enum $name:ident { $($variant:ident $( { $($field_idx:tt : $field:ident),* $(,)? } )?),* $(,)? } $($rest:tt)*) => {
-        impl Verbatim for alloy_json_abi::$name {
+        impl Verbatim for linera_alloy_json_abi::$name {
             fn to_verbatim_tokens(&self, s: &mut TokenStream, crates: &ExternCrates) {
                 match self {$(
                     Self::$variant $( { $($field_idx: $field),* } )? => {
                         $($(
                             let $field = ToTokensCompat($field, crates);
                         )*)?
-                        let alloy_sol_types = &crates.sol_types;
+                        let linera_alloy_sol_types = &crates.sol_types;
                         s.extend(quote! {
-                            #alloy_sol_types::private::alloy_json_abi::$name::$variant $( { $($field_idx: #$field),* } )?
+                            #linera_alloy_sol_types::private::linera_alloy_json_abi::$name::$variant $( { $($field_idx: #$field),* } )?
                         });
                     }
                 )*}

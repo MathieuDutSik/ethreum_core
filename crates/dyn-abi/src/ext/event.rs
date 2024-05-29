@@ -1,11 +1,11 @@
 use crate::{DecodedEvent, DynSolEvent, DynSolType, Error, Result, Specifier};
 use alloc::vec::Vec;
-use alloy_json_abi::Event;
-use alloy_primitives::{LogData, B256};
+use linera_alloy_json_abi::Event;
+use linera_alloy_primitives::{LogData, B256};
 
 mod sealed {
     pub trait Sealed {}
-    impl Sealed for alloy_json_abi::Event {}
+    impl Sealed for linera_alloy_json_abi::Event {}
 }
 use sealed::Sealed;
 
@@ -79,8 +79,8 @@ mod tests {
     use crate::DynSolValue;
 
     use super::*;
-    use alloy_json_abi::EventParam;
-    use alloy_primitives::{address, b256, bytes, hex, keccak256, Signed};
+    use linera_alloy_json_abi::EventParam;
+    use linera_alloy_primitives::{address, b256, bytes, hex, keccak256, Signed};
 
     #[test]
     fn empty() {

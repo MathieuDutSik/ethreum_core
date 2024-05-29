@@ -16,7 +16,7 @@ use crate::{
     Result, Word,
 };
 use alloc::vec::Vec;
-use alloy_primitives::{utils::vec_try_with_capacity, Bytes, FixedBytes, I256, U256};
+use linera_alloy_primitives::{utils::vec_try_with_capacity, Bytes, FixedBytes, I256, U256};
 use core::fmt;
 
 mod sealed {
@@ -655,7 +655,7 @@ all_the_tuples!(tuple_impls);
 mod tests {
     use super::*;
     use crate::{sol_data, SolType};
-    use alloy_primitives::B256;
+    use linera_alloy_primitives::B256;
 
     macro_rules! assert_type_check {
         ($sol:ty, $token:expr $(,)?) => {

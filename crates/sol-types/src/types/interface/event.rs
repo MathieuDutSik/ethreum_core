@@ -1,5 +1,5 @@
 use crate::{Result, Word};
-use alloy_primitives::Log;
+use linera_alloy_primitives::Log;
 
 /// A collection of [`SolEvent`]s.
 ///

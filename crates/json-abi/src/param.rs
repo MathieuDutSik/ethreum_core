@@ -96,7 +96,7 @@ impl Param {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_json_abi::Param;
+    /// # use linera_alloy_json_abi::Param;
     /// assert_eq!(
     ///     Param::parse("uint256[] foo"),
     ///     Ok(Param {
@@ -386,7 +386,7 @@ impl EventParam {
     ///
     /// ```
     /// # use std::panic::catch_unwind;
-    /// use alloy_json_abi::EventParam;
+    /// use linera_alloy_json_abi::EventParam;
     /// assert_eq!(
     ///     EventParam::parse("uint256[] indexed foo"),
     ///     Ok(EventParam {

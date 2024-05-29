@@ -46,7 +46,7 @@ pub mod token;
 pub use token::{Token, TokenSeq};
 
 /// The ABI encoding of an empty byte array (`bytes` or `string`).
-pub const EMPTY_BYTES: &[u8; 64] = &alloy_primitives::hex!(
+pub const EMPTY_BYTES: &[u8; 64] = &linera_alloy_primitives::hex!(
     "0000000000000000000000000000000000000000000000000000000000000020" // offset, points to the next word
     "0000000000000000000000000000000000000000000000000000000000000000" // length, 0
 );

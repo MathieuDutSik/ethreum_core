@@ -3,9 +3,9 @@
 //!
 //! Note: This is not the procedural macro crate, it is intended to be used as library crate.
 //!
-//! This crate is used by [`sol!`][sol!] macro in `alloy-sol-macro` crate.
+//! This crate is used by [`sol!`][sol!] macro in `linera-alloy-sol-macro` crate.
 //!
-//! [sol!]: https://docs.rs/alloy-sol-macro/latest/alloy_sol_macro/index.html
+//! [sol!]: https://docs.rs/linera-alloy-sol-macro/latest/linera_alloy_sol_macro/index.html
 
 pub mod expand;
 mod utils;

@@ -14,7 +14,7 @@ use winnow::{combinator::trace, PResult, Parser};
 /// # Examples
 ///
 /// ```
-/// # use alloy_sol_type_parser::TupleSpecifier;
+/// # use linera_alloy_sol_type_parser::TupleSpecifier;
 /// let spec = TupleSpecifier::parse("(uint256,uint256)")?;
 /// assert_eq!(spec.span(), "(uint256,uint256)");
 /// assert_eq!(spec.types.len(), 2);
@@ -22,7 +22,7 @@ use winnow::{combinator::trace, PResult, Parser};
 ///
 /// // No array suffixes. Use `TypeSpecifier` instead.
 /// assert!(TupleSpecifier::parse("(uint256,uint256)[]").is_err());
-/// # Ok::<_, alloy_sol_type_parser::Error>(())
+/// # Ok::<_, linera_alloy_sol_type_parser::Error>(())
 /// ```
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct TupleSpecifier<'a> {

@@ -1,5 +1,5 @@
 [package]
-name = "alloy-primitives"
+name = "linera-alloy-primitives"
 description = "Ethereum primitive types"
 keywords = ["ethers", "primitives", "ethereum", "revm", "reth"]
 categories = ["no-std", "data-structures", "cryptography::cryptocurrencies"]

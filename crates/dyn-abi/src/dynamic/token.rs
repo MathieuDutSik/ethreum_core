@@ -1,7 +1,7 @@
 use crate::{Decoder, DynSolValue, Error, Result, Word};
 use alloc::{borrow::Cow, boxed::Box, vec::Vec};
-use alloy_primitives::try_vec;
-use alloy_sol_types::abi::token::{PackedSeqToken, Token, WordToken};
+use linera_alloy_primitives::try_vec;
+use linera_alloy_sol_types::abi::token::{PackedSeqToken, Token, WordToken};
 
 /// A dynamic token.
 ///
@@ -175,7 +175,7 @@ impl<'a> DynToken<'a> {
                 // sequence. Each item in the sequence is at least one word, so
                 // the remaining words must be at least the size of the sequence
                 if child.remaining_words() < template.minimum_words() * size {
-                    return Err(alloy_sol_types::Error::Overrun.into());
+                    return Err(linera_alloy_sol_types::Error::Overrun.into());
                 }
 
                 let mut new_tokens = if size == 1 {

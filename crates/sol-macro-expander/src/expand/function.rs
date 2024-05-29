@@ -1,7 +1,7 @@
 //! [`ItemFunction`] expansion.
 
 use super::{expand_fields, expand_from_into_tuples, expand_tokenize, expand_tuple_types, ExpCtxt};
-use alloy_sol_macro_input::{mk_doc, ContainsSolAttrs};
+use linera_alloy_sol_macro_input::{mk_doc, ContainsSolAttrs};
 use ast::{FunctionKind, ItemFunction, Spanned};
 use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
@@ -85,8 +85,8 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, function: &ItemFunction) -> Result<TokenS
             let function = super::to_abi::generate(function, cx);
             quote! {
                 #[automatically_derived]
-                impl alloy_sol_types::JsonAbiExt for #call_name {
-                    type Abi = alloy_sol_types::private::alloy_json_abi::Function;
+                impl linera_alloy_sol_types::JsonAbiExt for #call_name {
+                    type Abi = linera_alloy_sol_types::private::linera_alloy_json_abi::Function;
 
                     #[inline]
                     fn abi() -> Self::Abi {
@@ -97,7 +97,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, function: &ItemFunction) -> Result<TokenS
         }
     });
 
-    let alloy_sol_types = &cx.crates.sol_types;
+    let linera_alloy_sol_types = &cx.crates.sol_types;
 
     let tokens = quote! {
         #(#call_attrs)*
@@ -118,26 +118,26 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, function: &ItemFunction) -> Result<TokenS
 
         #[allow(non_camel_case_types, non_snake_case, clippy::style)]
         const _: () = {
-            use #alloy_sol_types as alloy_sol_types;
+            use #linera_alloy_sol_types as linera_alloy_sol_types;
 
             { #converts }
             { #return_converts }
 
             #[automatically_derived]
-            impl alloy_sol_types::SolCall for #call_name {
+            impl linera_alloy_sol_types::SolCall for #call_name {
                 type Parameters<'a> = #call_tuple;
-                type Token<'a> = <Self::Parameters<'a> as alloy_sol_types::SolType>::Token<'a>;
+                type Token<'a> = <Self::Parameters<'a> as linera_alloy_sol_types::SolType>::Token<'a>;
 
                 type Return = #return_name;
 
                 type ReturnTuple<'a> = #return_tuple;
-                type ReturnToken<'a> = <Self::ReturnTuple<'a> as alloy_sol_types::SolType>::Token<'a>;
+                type ReturnToken<'a> = <Self::ReturnTuple<'a> as linera_alloy_sol_types::SolType>::Token<'a>;
 
                 const SIGNATURE: &'static str = #signature;
                 const SELECTOR: [u8; 4] = #selector;
 
                 #[inline]
-                fn new<'a>(tuple: <Self::Parameters<'a> as alloy_sol_types::SolType>::RustType) -> Self {
+                fn new<'a>(tuple: <Self::Parameters<'a> as linera_alloy_sol_types::SolType>::RustType) -> Self {
                     tuple.into()
                 }
 
@@ -147,8 +147,8 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, function: &ItemFunction) -> Result<TokenS
                 }
 
                 #[inline]
-                fn abi_decode_returns(data: &[u8], validate: bool) -> alloy_sol_types::Result<Self::Return> {
-                    <Self::ReturnTuple<'_> as alloy_sol_types::SolType>::abi_decode_sequence(data, validate).map(Into::into)
+                fn abi_decode_returns(data: &[u8], validate: bool) -> linera_alloy_sol_types::Result<Self::Return> {
+                    <Self::ReturnTuple<'_> as linera_alloy_sol_types::SolType>::abi_decode_sequence(data, validate).map(Into::into)
                 }
             }
 
@@ -164,7 +164,7 @@ fn expand_constructor(cx: &ExpCtxt<'_>, constructor: &ItemFunction) -> Result<To
     let (sol_attrs, call_attrs) = constructor.split_attrs()?;
     let docs = sol_attrs.docs.or(cx.attrs.docs).unwrap_or(true);
 
-    let alloy_sol_types = &cx.crates.sol_types;
+    let linera_alloy_sol_types = &cx.crates.sol_types;
 
     let call_name = format_ident!("constructorCall").with_span(constructor.kind.span());
     let call_fields = expand_fields(parameters, cx);
@@ -189,17 +189,17 @@ fn expand_constructor(cx: &ExpCtxt<'_>, constructor: &ItemFunction) -> Result<To
         }
 
         const _: () = {
-            use #alloy_sol_types as alloy_sol_types;
+            use #linera_alloy_sol_types as linera_alloy_sol_types;
 
             { #converts }
 
             #[automatically_derived]
-            impl alloy_sol_types::SolConstructor for #call_name {
+            impl linera_alloy_sol_types::SolConstructor for #call_name {
                 type Parameters<'a> = #call_tuple;
-                type Token<'a> = <Self::Parameters<'a> as alloy_sol_types::SolType>::Token<'a>;
+                type Token<'a> = <Self::Parameters<'a> as linera_alloy_sol_types::SolType>::Token<'a>;
 
                 #[inline]
-                fn new<'a>(tuple: <Self::Parameters<'a> as alloy_sol_types::SolType>::RustType) -> Self {
+                fn new<'a>(tuple: <Self::Parameters<'a> as linera_alloy_sol_types::SolType>::RustType) -> Self {
                     tuple.into()
                 }
 

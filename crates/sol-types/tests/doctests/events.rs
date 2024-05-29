@@ -1,8 +1,8 @@
 #![allow(clippy::assertions_on_constants)]
 
-use alloy_primitives::{hex, keccak256, Bytes, Log, B256, U256};
+use linera_alloy_primitives::{hex, keccak256, Bytes, Log, B256, U256};
 use alloy_rlp::{Decodable, Encodable};
-use alloy_sol_types::{abi::token::WordToken, sol, SolEvent};
+use linera_alloy_sol_types::{abi::token::WordToken, sol, SolEvent};
 
 sol! {
     #[derive(Default, PartialEq, Debug)]

@@ -1,5 +1,5 @@
-use alloy_primitives::{address, hex, U256};
-use alloy_sol_types::{sol, SolCall, SolConstructor, SolInterface};
+use linera_alloy_primitives::{address, hex, U256};
+use linera_alloy_sol_types::{sol, SolCall, SolConstructor, SolInterface};
 
 sol! {
     /// Interface of the ERC20 standard as defined in [the EIP].

@@ -1,4 +1,4 @@
-use alloy_sol_types::sol;
+use linera_alloy_sol_types::sol;
 
 compile_error!("No fail cases");
 

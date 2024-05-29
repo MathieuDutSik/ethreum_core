@@ -1,4 +1,4 @@
-# alloy-sol-types
+# linera-alloy-sol-types
 
 Compile-time representation of Ethereum's type system with ABI and EIP-712
 support.
@@ -7,7 +7,7 @@ This crate provides a developer-friendly interface to Ethereum's type system,
 by representing Solidity types. See [type_system.md](./type_system.md) for a rundown, and the
 [crate docs] for more information
 
-[crate docs]: https://docs.rs/alloy-sol-types/latest/alloy_sol_types/
+[crate docs]: https://docs.rs/linera-alloy-sol-types/latest/linera_alloy_sol_types/
 
 ### Features
 

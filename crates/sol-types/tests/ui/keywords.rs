@@ -1,4 +1,4 @@
-use alloy_sol_types::sol;
+use linera_alloy_sol_types::sol;
 
 macro_rules! kws {
     ($($kw:tt)*) => {$(

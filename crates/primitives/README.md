@@ -1,4 +1,4 @@
-# alloy-primitives
+# linera-alloy-primitives
 
 Primitive types shared by [alloy], [foundry], [revm], and [reth].
 
@@ -23,10 +23,10 @@ Primitive types shared by [alloy], [foundry], [revm], and [reth].
 This library has straightforward, basic, types. Usage is correspondingly simple.
 Please consult [the documentation][docs] for more information.
 
-[docs]: https://docs.rs/alloy-primitives/latest/alloy_primitives/
+[docs]: https://docs.rs/linera-alloy-primitives/latest/linera_alloy_primitives/
 
 ```rust
-use alloy_primitives::{address, fixed_bytes, Address, FixedBytes, I256, U256};
+use linera_alloy_primitives::{address, fixed_bytes, Address, FixedBytes, I256, U256};
 
 // FixedBytes
 let n: FixedBytes<6> = fixed_bytes!("1234567890ab");

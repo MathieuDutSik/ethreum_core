@@ -10,7 +10,7 @@
 #![allow(clippy::arc_with_non_send_sync)]
 
 use crate::{DynSolType, DynSolValue};
-use alloy_primitives::{Address, Function, B256, I256, U256};
+use linera_alloy_primitives::{Address, Function, B256, I256, U256};
 use arbitrary::{size_hint, Unstructured};
 use core::ops::RangeInclusive;
 use proptest::{
@@ -671,7 +671,7 @@ mod tests {
                 hex::encode_prefixed(&data),
             ),
             Ok(_) => {}
-            Err(e @ crate::Error::SolTypes(alloy_sol_types::Error::RecursionLimitExceeded(_))) => {
+            Err(e @ crate::Error::SolTypes(linera_alloy_sol_types::Error::RecursionLimitExceeded(_))) => {
                 return Err(TestCaseError::Reject(e.to_string().into()));
             }
             Err(e) => prop_assert!(

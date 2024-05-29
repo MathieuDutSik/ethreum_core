@@ -1,5 +1,5 @@
-use alloy_primitives::B256;
-use alloy_sol_types::{eip712_domain, sol, SolStruct};
+use linera_alloy_primitives::B256;
+use linera_alloy_sol_types::{eip712_domain, sol, SolStruct};
 
 #[test]
 fn encode_type_nesting() {
@@ -59,7 +59,7 @@ fn encode_data_nesting() {
     };
 
     assert_eq!(
-        alloy_sol_types::SolStruct::eip712_signing_hash(&mail, &domain),
+        linera_alloy_sol_types::SolStruct::eip712_signing_hash(&mail, &domain),
         "25c3d40a39e639a4d0b6e4d2ace5e1281e039c88494d97d8d08f99a6ea75d775".parse::<B256>().unwrap()
     )
 }

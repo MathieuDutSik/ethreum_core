@@ -4,7 +4,7 @@ use crate::{
     Result, SolType, Word,
 };
 use alloc::{string::String, vec::Vec};
-use alloy_primitives::U256;
+use linera_alloy_primitives::U256;
 use core::{borrow::Borrow, fmt};
 
 /// A Solidity custom error.
@@ -421,7 +421,7 @@ mod tests {
     use super::*;
     use crate::{sol, types::interface::SolInterface};
     use alloc::string::ToString;
-    use alloy_primitives::{address, hex, keccak256};
+    use linera_alloy_primitives::{address, hex, keccak256};
 
     #[test]
     fn revert_encoding() {

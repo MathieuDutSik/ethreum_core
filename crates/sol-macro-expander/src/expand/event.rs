@@ -1,7 +1,7 @@
 //! [`ItemEvent`] expansion.
 
 use super::{anon_name, expand_event_tokenize, expand_tuple_types, expand_type, ty, ExpCtxt};
-use alloy_sol_macro_input::{mk_doc, ContainsSolAttrs};
+use linera_alloy_sol_macro_input::{mk_doc, ContainsSolAttrs};
 use ast::{EventParameter, ItemEvent, SolIdent, Spanned};
 use proc_macro2::TokenStream;
 use quote::{quote, quote_spanned};
@@ -35,7 +35,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, event: &ItemEvent) -> Result<TokenStream>
     let anonymous = event.is_anonymous();
 
     // prepend the first topic if not anonymous
-    let first_topic = (!anonymous).then(|| quote!(alloy_sol_types::sol_data::FixedBytes<32>));
+    let first_topic = (!anonymous).then(|| quote!(linera_alloy_sol_types::sol_data::FixedBytes<32>));
     let topic_list = event.indexed_params().map(|p| expand_event_topic_type(p, cx));
     let topic_list = first_topic.into_iter().chain(topic_list);
 
@@ -75,7 +75,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, event: &ItemEvent) -> Result<TokenStream>
     };
 
     let encode_first_topic =
-        (!anonymous).then(|| quote!(alloy_sol_types::abi::token::WordToken(Self::SIGNATURE_HASH)));
+        (!anonymous).then(|| quote!(linera_alloy_sol_types::abi::token::WordToken(Self::SIGNATURE_HASH)));
 
     let encode_topics_impl = event.parameters.iter().enumerate().filter(|(_, p)| p.is_indexed()).map(|(i, p)| {
         let name = anon_name((i, p.name.as_ref()));
@@ -83,11 +83,11 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, event: &ItemEvent) -> Result<TokenStream>
 
         if p.indexed_as_hash() {
             quote! {
-                <alloy_sol_types::sol_data::FixedBytes<32> as alloy_sol_types::EventTopic>::encode_topic(&self.#name)
+                <linera_alloy_sol_types::sol_data::FixedBytes<32> as linera_alloy_sol_types::EventTopic>::encode_topic(&self.#name)
             }
         } else {
             quote! {
-                <#ty as alloy_sol_types::EventTopic>::encode_topic(&self.#name)
+                <#ty as linera_alloy_sol_types::EventTopic>::encode_topic(&self.#name)
             }
         }
     });
@@ -119,8 +119,8 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, event: &ItemEvent) -> Result<TokenStream>
             let event = super::to_abi::generate(event, cx);
             quote! {
                 #[automatically_derived]
-                impl alloy_sol_types::JsonAbiExt for #name {
-                    type Abi = alloy_sol_types::private::alloy_json_abi::Event;
+                impl linera_alloy_sol_types::JsonAbiExt for #name {
+                    type Abi = linera_alloy_sol_types::private::linera_alloy_json_abi::Event;
 
                     #[inline]
                     fn abi() -> Self::Abi {
@@ -131,7 +131,7 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, event: &ItemEvent) -> Result<TokenStream>
         }
     });
 
-    let alloy_sol_types = &cx.crates.sol_types;
+    let linera_alloy_sol_types = &cx.crates.sol_types;
 
     let tokens = quote! {
         #(#attrs)*
@@ -147,26 +147,26 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, event: &ItemEvent) -> Result<TokenStream>
 
         #[allow(non_camel_case_types, non_snake_case, clippy::style)]
         const _: () = {
-            use #alloy_sol_types as alloy_sol_types;
+            use #linera_alloy_sol_types as linera_alloy_sol_types;
 
             #[automatically_derived]
-            impl alloy_sol_types::SolEvent for #name {
+            impl linera_alloy_sol_types::SolEvent for #name {
                 type DataTuple<'a> = #data_tuple;
-                type DataToken<'a> = <Self::DataTuple<'a> as alloy_sol_types::SolType>::Token<'a>;
+                type DataToken<'a> = <Self::DataTuple<'a> as linera_alloy_sol_types::SolType>::Token<'a>;
 
                 type TopicList = (#(#topic_list,)*);
 
                 const SIGNATURE: &'static str = #signature;
-                const SIGNATURE_HASH: alloy_sol_types::private::B256 =
-                    alloy_sol_types::private::B256::new(#selector);
+                const SIGNATURE_HASH: linera_alloy_sol_types::private::B256 =
+                    linera_alloy_sol_types::private::B256::new(#selector);
 
                 const ANONYMOUS: bool = #anonymous;
 
                 #[allow(unused_variables)]
                 #[inline]
                 fn new(
-                    topics: <Self::TopicList as alloy_sol_types::SolType>::RustType,
-                    data: <Self::DataTuple<'_> as alloy_sol_types::SolType>::RustType,
+                    topics: <Self::TopicList as linera_alloy_sol_types::SolType>::RustType,
+                    data: <Self::DataTuple<'_> as linera_alloy_sol_types::SolType>::RustType,
                 ) -> Self {
                     Self {
                         #(#new_impl,)*
@@ -179,29 +179,29 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, event: &ItemEvent) -> Result<TokenStream>
                 }
 
                 #[inline]
-                fn topics(&self) -> <Self::TopicList as alloy_sol_types::SolType>::RustType {
+                fn topics(&self) -> <Self::TopicList as linera_alloy_sol_types::SolType>::RustType {
                     #topics_impl
                 }
 
                 #[inline]
                 fn encode_topics_raw(
                     &self,
-                    out: &mut [alloy_sol_types::abi::token::WordToken],
-                ) -> alloy_sol_types::Result<()> {
-                    if out.len() < <Self::TopicList as alloy_sol_types::TopicList>::COUNT {
-                        return Err(alloy_sol_types::Error::Overrun);
+                    out: &mut [linera_alloy_sol_types::abi::token::WordToken],
+                ) -> linera_alloy_sol_types::Result<()> {
+                    if out.len() < <Self::TopicList as linera_alloy_sol_types::TopicList>::COUNT {
+                        return Err(linera_alloy_sol_types::Error::Overrun);
                     }
                     #(#encode_topics_impl)*
                     Ok(())
                 }
             }
 
-            impl From<&#name> for alloy_sol_types::private::LogData {
+            impl From<&#name> for linera_alloy_sol_types::private::LogData {
                 #[inline]
-                fn from(this: &#name) -> alloy_sol_types::private::LogData {
-                    let topics = alloy_sol_types::SolEvent::encode_topics(this).into_iter().map(|t| t.into()).collect();
-                    let data = alloy_sol_types::SolEvent::encode_data(this).into();
-                    alloy_sol_types::private::LogData::new_unchecked(topics, data)
+                fn from(this: &#name) -> linera_alloy_sol_types::private::LogData {
+                    let topics = linera_alloy_sol_types::SolEvent::encode_topics(this).into_iter().map(|t| t.into()).collect();
+                    let data = linera_alloy_sol_types::SolEvent::encode_data(this).into();
+                    linera_alloy_sol_types::private::LogData::new_unchecked(topics, data)
                 }
             }
 
@@ -212,10 +212,10 @@ pub(super) fn expand(cx: &ExpCtxt<'_>, event: &ItemEvent) -> Result<TokenStream>
 }
 
 fn expand_event_topic_type(param: &EventParameter, cx: &ExpCtxt<'_>) -> TokenStream {
-    let alloy_sol_types = &cx.crates.sol_types;
+    let linera_alloy_sol_types = &cx.crates.sol_types;
     assert!(param.is_indexed());
     if param.is_abi_dynamic() {
-        quote_spanned! {param.ty.span()=> #alloy_sol_types::sol_data::FixedBytes<32> }
+        quote_spanned! {param.ty.span()=> #linera_alloy_sol_types::sol_data::FixedBytes<32> }
     } else {
         expand_type(&param.ty, &cx.crates)
     }

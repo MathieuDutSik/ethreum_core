@@ -4,11 +4,11 @@
 
 use crate::{DynSolType, Result};
 use alloc::vec::Vec;
-use alloy_json_abi::{EventParam, Param};
+use linera_alloy_json_abi::{EventParam, Param};
 use parser::{ParameterSpecifier, Parameters, RootType, TupleSpecifier, TypeSpecifier, TypeStem};
 
 #[cfg(feature = "eip712")]
-use alloy_json_abi::InternalType;
+use linera_alloy_json_abi::InternalType;
 
 /// Trait for items that can be resolved to `DynSol_____`, i.e. they specify some Solidity interface
 /// item.
@@ -27,8 +27,8 @@ use alloy_json_abi::InternalType;
 /// # Examples
 ///
 /// ```
-/// # use alloy_dyn_abi::{DynSolType, Specifier};
-/// # use alloy_sol_type_parser::{RootType, TypeSpecifier};
+/// # use linera_alloy_dyn_abi::{DynSolType, Specifier};
+/// # use linera_alloy_sol_type_parser::{RootType, TypeSpecifier};
 /// let my_ty = TypeSpecifier::parse("bool")?.resolve()?;
 /// assert_eq!(my_ty, DynSolType::Bool);
 ///
@@ -36,7 +36,7 @@ use alloy_json_abi::InternalType;
 /// assert_eq!(my_ty, DynSolType::Uint(256));
 ///
 /// assert_eq!("bytes32".resolve()?, DynSolType::FixedBytes(32));
-/// # Ok::<_, alloy_dyn_abi::Error>(())
+/// # Ok::<_, linera_alloy_dyn_abi::Error>(())
 /// ```
 
 pub trait Specifier<T> {

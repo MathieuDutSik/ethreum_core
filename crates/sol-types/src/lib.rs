@@ -26,7 +26,7 @@
 //! [EIP-712]: https://eips.ethereum.org/EIPS/eip-712
 //!
 //! ```
-//! use alloy_sol_types::{sol_data::*, SolType, SolValue};
+//! use linera_alloy_sol_types::{sol_data::*, SolType, SolValue};
 //!
 //! // Represent a Solidity type in rust
 //! type MySolType = FixedArray<Bool, 2>;
@@ -46,7 +46,7 @@
 //! let encoded: Vec<u8> = data.abi_encode();
 //! let decoded: [bool; 2] = <[bool; 2]>::abi_decode(&encoded, validate)?;
 //! assert_eq!(data, decoded);
-//! # Ok::<_, alloy_sol_types::Error>(())
+//! # Ok::<_, linera_alloy_sol_types::Error>(())
 //! ```
 //!
 //! ## [`sol!`]
@@ -60,8 +60,8 @@
 //! The [`SolStruct`] trait primarily provides EIP-712 signing support.
 //!
 //! ```
-//! # use alloy_sol_types::{sol, SolStruct};
-//! # use alloy_primitives::U256;
+//! # use linera_alloy_sol_types::{sol, SolStruct};
+//! # use linera_alloy_primitives::U256;
 //! // `sol!` allows you to define struct types!
 //! // You can just paste Solidity into the macro and it should work :)
 //! sol! {
@@ -90,7 +90,7 @@
 //!
 //! // The `eip712_domain` macro lets you easily define an EIP-712 domain
 //! // object :)
-//! let my_domain = alloy_sol_types::eip712_domain!(
+//! let my_domain = linera_alloy_sol_types::eip712_domain!(
 //!    name: "MyDomain",
 //!    version: "1",
 //! );
@@ -107,8 +107,8 @@
 //! features!
 //!
 //! ```
-//! # use alloy_sol_types::{sol, sol_data, SolType};
-//! # use alloy_primitives::U256;
+//! # use linera_alloy_sol_types::{sol, sol_data, SolType};
+//! # use linera_alloy_primitives::U256;
 //! // We also also support Solidity value types
 //! sol! {
 //!     type MyValueType is uint256;
@@ -163,7 +163,7 @@
 #![allow(unknown_lints, non_local_definitions)]
 
 #[allow(unused_extern_crates)]
-extern crate self as alloy_sol_types;
+extern crate self as linera_alloy_sol_types;
 
 #[macro_use]
 extern crate alloc;
@@ -196,10 +196,10 @@ mod eip712;
 pub use eip712::Eip712Domain;
 
 /// The ABI word type.
-pub type Word = alloy_primitives::B256;
+pub type Word = linera_alloy_primitives::B256;
 
 #[doc(no_inline)]
-pub use alloy_sol_macro::sol;
+pub use linera_alloy_sol_macro::sol;
 
 // Not public API.
 #[doc(hidden)]
@@ -217,7 +217,7 @@ pub mod private {
         vec,
         vec::Vec,
     };
-    pub use alloy_primitives::{
+    pub use linera_alloy_primitives::{
         bytes, keccak256, Address, Bytes, FixedBytes, Function, LogData, Signed, Uint, B256, I256,
         U256,
     };
@@ -233,7 +233,7 @@ pub mod private {
     pub use Result::{Err, Ok};
 
     #[cfg(feature = "json")]
-    pub use alloy_json_abi;
+    pub use linera_alloy_json_abi;
 
     /// An ABI-encodable is any type that may be encoded via a given `SolType`.
     ///

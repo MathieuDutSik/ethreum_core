@@ -47,14 +47,14 @@ use winnow::{
 /// # Examples
 ///
 /// ```
-/// # use alloy_sol_type_parser::TypeSpecifier;
+/// # use linera_alloy_sol_type_parser::TypeSpecifier;
 /// # use core::num::NonZeroUsize;
 /// let spec = TypeSpecifier::parse("uint256[2][]")?;
 /// assert_eq!(spec.span(), "uint256[2][]");
 /// assert_eq!(spec.stem.span(), "uint256");
 /// // The sizes are in innermost-to-outermost order.
 /// assert_eq!(spec.sizes.as_slice(), &[NonZeroUsize::new(2), None]);
-/// # Ok::<_, alloy_sol_type_parser::Error>(())
+/// # Ok::<_, linera_alloy_sol_type_parser::Error>(())
 /// ```
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct TypeSpecifier<'a> {

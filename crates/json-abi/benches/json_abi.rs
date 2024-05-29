@@ -13,7 +13,7 @@ fn serde(c: &mut Criterion) {
 }
 
 fn serde_(g: &mut BenchmarkGroup<'_, WallTime>, name: &str, s: &str) {
-    type A = alloy_json_abi::JsonAbi;
+    type A = linera_alloy_json_abi::JsonAbi;
     type E = ethabi::Contract;
 
     g.bench_function(format!("{name}/ser/alloy"), |b| {
@@ -40,7 +40,7 @@ fn signature(c: &mut Criterion) {
 }
 
 fn signature_(g: &mut BenchmarkGroup<'_, WallTime>, name: &str, s: &str) {
-    let mut alloy = serde_json::from_str::<alloy_json_abi::Function>(s).unwrap();
+    let mut alloy = serde_json::from_str::<linera_alloy_json_abi::Function>(s).unwrap();
     let mut ethabi = serde_json::from_str::<ethabi::Function>(s).unwrap();
 
     assert_eq!(alloy.selector(), ethabi.short_signature());

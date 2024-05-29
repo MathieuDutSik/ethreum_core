@@ -24,7 +24,7 @@ this to be one of the fastest implementations for regular encoding/decoding. :)
 
 This crate works only with types known at compile-time. For types known only at
 runtime (including the eip712 `eth_signTypedData` JSON-RPC request), see the
-`alloy-dyn-abi` crate.
+`linera-alloy-dyn-abi` crate.
 
 ### To what extent?
 

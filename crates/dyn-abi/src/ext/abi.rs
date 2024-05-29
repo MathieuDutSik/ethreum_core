@@ -1,8 +1,8 @@
 use crate::{DynSolValue, Error as CrateError, Result, Specifier};
 use alloc::vec::Vec;
-use alloy_json_abi::{Constructor, Error, Function, Param};
-use alloy_primitives::Selector;
-use alloy_sol_types::abi::Decoder;
+use linera_alloy_json_abi::{Constructor, Error, Function, Param};
+use linera_alloy_primitives::Selector;
+use linera_alloy_sol_types::abi::Decoder;
 
 mod sealed {
     pub trait Sealed {}
@@ -193,7 +193,7 @@ fn abi_decode(data: &[u8], params: &[Param], validate: bool) -> Result<Vec<DynSo
 #[cfg(test)]
 mod tests {
     use super::*;
-    use alloy_primitives::{address, bytes, hex, Address, U256};
+    use linera_alloy_primitives::{address, bytes, hex, Address, U256};
 
     #[test]
     fn can_encode_decode_functions() {
@@ -228,7 +228,7 @@ mod tests {
         assert_eq!(func.signature(), "allowance(address,address)");
 
         // encode
-        let expected = alloy_primitives::hex!(
+        let expected = linera_alloy_primitives::hex!(
             "dd62ed3e"
             "0000000000000000000000001111111111111111111111111111111111111111"
             "0000000000000000000000002222222222222222222222222222222222222222"

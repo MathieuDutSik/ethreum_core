@@ -1,7 +1,7 @@
 #![allow(unknown_lints, clippy::incompatible_msrv)]
 
-use alloy_dyn_abi::{DynSolType, Specifier};
-use alloy_sol_type_parser::TypeSpecifier;
+use linera_alloy_dyn_abi::{DynSolType, Specifier};
+use linera_alloy_sol_type_parser::TypeSpecifier;
 use criterion::{
     criterion_group, criterion_main, measurement::WallTime, BenchmarkGroup, Criterion,
 };

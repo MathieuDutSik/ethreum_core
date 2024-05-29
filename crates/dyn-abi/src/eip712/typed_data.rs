@@ -3,8 +3,8 @@ use crate::{
     DynSolType, DynSolValue, Result,
 };
 use alloc::{collections::BTreeMap, string::String, vec::Vec};
-use alloy_primitives::{keccak256, B256};
-use alloy_sol_types::{Eip712Domain, SolStruct};
+use linera_alloy_primitives::{keccak256, B256};
+use linera_alloy_sol_types::{Eip712Domain, SolStruct};
 use derive_more::{Deref, DerefMut, From, Into, IntoIterator};
 use parser::TypeSpecifier;
 use serde::{Deserialize, Serialize};
@@ -227,7 +227,7 @@ mod tests {
     use super::*;
     use crate::Error;
     use alloc::string::ToString;
-    use alloy_sol_types::sol;
+    use linera_alloy_sol_types::sol;
     use serde_json::json;
 
     #[test]

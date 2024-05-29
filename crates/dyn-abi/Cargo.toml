@@ -1,5 +1,5 @@
 [package]
-name = "alloy-dyn-abi"
+name = "linera-alloy-dyn-abi"
 description = "Run-time ABI and EIP-712 implementations"
 keywords = ["ethereum", "abi", "encoding", "evm", "solidity"]
 categories = ["no-std", "encoding", "cryptography::cryptocurrencies"]
@@ -18,10 +18,10 @@ all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
-alloy-json-abi.workspace = true
-alloy-sol-type-parser.workspace = true
-alloy-sol-types.workspace = true
-alloy-primitives.workspace = true
+linera-alloy-json-abi.workspace = true
+linera-alloy-sol-type-parser.workspace = true
+linera-alloy-sol-types.workspace = true
+linera-alloy-primitives.workspace = true
 
 hex.workspace = true
 itoa.workspace = true
@@ -38,7 +38,7 @@ derive_arbitrary = { workspace = true, optional = true }
 proptest = { workspace = true, optional = true }
 
 [dev-dependencies]
-alloy-dyn-abi = { path = ".", version = ">=0", features = ["std"] }
+linera-alloy-dyn-abi = { path = ".", version = ">=0", features = ["std"] }
 criterion.workspace = true
 ethabi = "18"
 rand = "0.8"
@@ -47,25 +47,25 @@ serde_json.workspace = true
 [features]
 default = ["std"]
 std = [
-    "alloy-json-abi/std",
-    "alloy-sol-types/std",
-    "alloy-sol-type-parser/std",
-    "alloy-primitives/std",
+    "linera-alloy-json-abi/std",
+    "linera-alloy-sol-types/std",
+    "linera-alloy-sol-type-parser/std",
+    "linera-alloy-primitives/std",
     "hex/std",
     "serde?/std",
     "serde_json?/std",
 ]
-eip712 = ["alloy-sol-types/eip712-serde", "dep:derive_more", "dep:serde", "dep:serde_json"]
+eip712 = ["linera-alloy-sol-types/eip712-serde", "dep:derive_more", "dep:serde", "dep:serde_json"]
 arbitrary = [
     "std",
-    "alloy-sol-types/arbitrary",
+    "linera-alloy-sol-types/arbitrary",
     "dep:arbitrary",
     "dep:derive_arbitrary",
     "dep:proptest",
 ]
 
 # Debug winnow parsers; intentionally doesn't enable `winnow/debug`
-debug = ["std", "alloy-sol-type-parser/debug"]
+debug = ["std", "linera-alloy-sol-type-parser/debug"]
 
 [[bench]]
 name = "abi"

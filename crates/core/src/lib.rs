@@ -18,21 +18,21 @@
 #![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
 
 #[doc(inline)]
-pub use alloy_primitives as primitives;
+pub use linera_alloy_primitives as primitives;
 #[doc(no_inline)]
 pub use primitives::{hex, uint};
 
 #[cfg(feature = "dyn-abi")]
 #[doc(inline)]
-pub use alloy_dyn_abi as dyn_abi;
+pub use linera_alloy_dyn_abi as dyn_abi;
 
 #[cfg(feature = "json-abi")]
 #[doc(inline)]
-pub use alloy_json_abi as json_abi;
+pub use linera_alloy_json_abi as json_abi;
 
 #[cfg(feature = "sol-types")]
 #[doc(inline)]
-pub use alloy_sol_types as sol_types;
+pub use linera_alloy_sol_types as sol_types;
 #[cfg(all(doc, feature = "sol-types"))] // Show this re-export in docs instead of the wrapper below.
 #[doc(no_inline)]
 pub use sol_types::sol;
@@ -49,7 +49,7 @@ pub use alloy_rlp as rlp;
 macro_rules! sol {
     ($($t:tt)*) => {
         $crate::sol_types::sol! {
-            #![sol(alloy_sol_types = $crate::sol_types)]
+            #![sol(linera_alloy_sol_types = $crate::sol_types)]
             $($t)*
         }
     };

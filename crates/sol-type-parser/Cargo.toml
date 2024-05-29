@@ -1,5 +1,5 @@
 [package]
-name = "alloy-sol-type-parser"
+name = "linera-alloy-sol-type-parser"
 description = "Simple and light-weight Solidity type strings parser"
 keywords = ["ethereum", "abi", "evm", "solidity", "parser"]
 categories = ["no-std", "cryptography::cryptocurrencies"]

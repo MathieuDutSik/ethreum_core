@@ -1,17 +1,17 @@
-# alloy-sol-type-parser
+# linera-alloy-sol-type-parser
 
 Simple and light-weight Solidity type strings parser.
 
 This library is primarily a dependency for the user-facing APIs in
-[`alloy-json-abi`] and [`alloy-dyn-abi`]. Please see the documentation for
+[`linera-alloy-json-abi`] and [`linera-alloy-dyn-abi`]. Please see the documentation for
 those crates for more information.
 
 This parser generally follows the [Solidity spec], however, it supports only a
 subset of possible types, chosen to support ABI coding.
 
 [Solidity spec]: https://docs.soliditylang.org/en/latest/grammar.html#a4.SolidityParser.typeName
-[`alloy-json-abi`]: https://docs.rs/alloy-json-abi/latest/alloy_json_abi/
-[`alloy-dyn-abi`]: https://docs.rs/alloy-dyn-abi/latest/alloy_dyn_abi/
+[`linera-alloy-json-abi`]: https://docs.rs/linera-alloy-json-abi/latest/linera_alloy_json_abi/
+[`linera-alloy-dyn-abi`]: https://docs.rs/linera-alloy-dyn-abi/latest/linera_alloy_dyn_abi/
 
 ### Usage
 
@@ -22,7 +22,7 @@ type as well as the sizes of array dimensions. A `TypeSpecifier` is expected to
 handle any valid Solidity type string.
 
 ```rust
-use alloy_sol_type_parser::TypeSpecifier;
+use linera_alloy_sol_type_parser::TypeSpecifier;
 use core::num::NonZeroUsize;
 
 // Parse a type specifier from a string
@@ -74,7 +74,7 @@ It is not intended to be used for parsing Solidity source code.
 This crate is useful for:
 
 - syntax-checking JSON ABI files
-- providing known-good input to [`alloy-dyn-abi`]
+- providing known-good input to [`linera-alloy-dyn-abi`]
 - porting ethers.js code to rust
 
 It is NOT useful for:

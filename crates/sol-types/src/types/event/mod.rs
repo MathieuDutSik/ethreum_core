@@ -3,7 +3,7 @@ use crate::{
     Result, SolType, Word,
 };
 use alloc::vec::Vec;
-use alloy_primitives::{FixedBytes, Log, LogData, B256};
+use linera_alloy_primitives::{FixedBytes, Log, LogData, B256};
 
 mod topic;
 pub use topic::EventTopic;

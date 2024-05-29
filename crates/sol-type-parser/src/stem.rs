@@ -6,7 +6,7 @@ use winnow::{combinator::trace, PResult, Parser};
 /// # Examples
 ///
 /// ```
-/// # use alloy_sol_type_parser::{TypeStem, RootType, TupleSpecifier};
+/// # use linera_alloy_sol_type_parser::{TypeStem, RootType, TupleSpecifier};
 /// let stem = TypeStem::parse("uint256")?;
 /// assert_eq!(stem.span(), "uint256");
 /// assert!(matches!(stem, TypeStem::Root(_)));
@@ -16,7 +16,7 @@ use winnow::{combinator::trace, PResult, Parser};
 /// assert_eq!(stem.span(), "(uint256,bool)");
 /// assert!(matches!(stem, TypeStem::Tuple(_)));
 /// assert_eq!(stem.as_tuple(), Some(&TupleSpecifier::parse("(uint256,bool)").unwrap()));
-/// # Ok::<_, alloy_sol_type_parser::Error>(())
+/// # Ok::<_, linera_alloy_sol_type_parser::Error>(())
 /// ```
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum TypeStem<'a> {

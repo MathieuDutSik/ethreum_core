@@ -1,4 +1,4 @@
-use alloy_json_abi::{EventParam, Param};
+use linera_alloy_json_abi::{EventParam, Param};
 
 #[test]
 fn event_param_deserialization() {

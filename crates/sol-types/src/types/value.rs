@@ -6,7 +6,7 @@ use crate::{
     Result, Word,
 };
 use alloc::{borrow::Cow, string::String, vec::Vec};
-use alloy_primitives::{Address, Bytes, FixedBytes, Function, I256, U256};
+use linera_alloy_primitives::{Address, Bytes, FixedBytes, Function, I256, U256};
 
 /// A Solidity value.
 ///
@@ -25,7 +25,7 @@ use alloy_primitives::{Address, Bytes, FixedBytes, Function, I256, U256};
 /// # Examples
 ///
 /// ```
-/// use alloy_sol_types::SolValue;
+/// use linera_alloy_sol_types::SolValue;
 ///
 /// let my_values = ("hello", 0xdeadbeef_u32, true, [0x42_u8; 24]);
 /// let _ = my_values.abi_encode();

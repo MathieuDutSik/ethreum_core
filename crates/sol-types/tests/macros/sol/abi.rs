@@ -1,7 +1,7 @@
-use alloy_json_abi::{
+use linera_alloy_json_abi::{
     Constructor, Error, EventParam, Fallback, Function, Param, Receive, StateMutability,
 };
-use alloy_sol_types::{sol, JsonAbiExt};
+use linera_alloy_sol_types::{sol, JsonAbiExt};
 use pretty_assertions::assert_eq;
 use std::collections::BTreeMap;
 
@@ -172,11 +172,11 @@ fn equal_abis() {
     assert_eq!(contract.events, Contract::abi::events());
     assert_eq!(
         *contract.event("EV00").unwrap().first().unwrap(),
-        alloy_json_abi::Event { name: "EV00".into(), inputs: vec![], anonymous: false }
+        linera_alloy_json_abi::Event { name: "EV00".into(), inputs: vec![], anonymous: false }
     );
     assert_eq!(
         *contract.event("EV01").unwrap().first().unwrap(),
-        alloy_json_abi::Event {
+        linera_alloy_json_abi::Event {
             name: "EV01".into(),
             inputs: vec![eparam("uint256 a", false)],
             anonymous: false,
@@ -184,7 +184,7 @@ fn equal_abis() {
     );
     assert_eq!(
         *contract.event("EV02").unwrap().first().unwrap(),
-        alloy_json_abi::Event {
+        linera_alloy_json_abi::Event {
             name: "EV02".into(),
             inputs: vec![eparam("uint256 ", false), eparam("bool b", false)],
             anonymous: false,
@@ -192,11 +192,11 @@ fn equal_abis() {
     );
     assert_eq!(
         *contract.event("EV10").unwrap().first().unwrap(),
-        alloy_json_abi::Event { name: "EV10".into(), inputs: vec![], anonymous: true }
+        linera_alloy_json_abi::Event { name: "EV10".into(), inputs: vec![], anonymous: true }
     );
     assert_eq!(
         *contract.event("EV11").unwrap().first().unwrap(),
-        alloy_json_abi::Event {
+        linera_alloy_json_abi::Event {
             name: "EV11".into(),
             inputs: vec![eparam("uint256 a", true)],
             anonymous: true,
@@ -204,7 +204,7 @@ fn equal_abis() {
     );
     assert_eq!(
         *contract.event("EV12").unwrap().first().unwrap(),
-        alloy_json_abi::Event {
+        linera_alloy_json_abi::Event {
             name: "EV12".into(),
             inputs: vec![eparam("uint256 ", false), eparam("bool b", true)],
             anonymous: true,

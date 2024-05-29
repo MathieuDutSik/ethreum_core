@@ -66,7 +66,7 @@ impl StateMutability {
 /// [`StateMutability`] struct field.
 ///
 /// ```rust
-/// use alloy_json_abi::{serde_state_mutability_compat, StateMutability};
+/// use linera_alloy_json_abi::{serde_state_mutability_compat, StateMutability};
 /// use serde::{Deserialize, Serialize};
 ///
 /// #[derive(Serialize, Deserialize)]

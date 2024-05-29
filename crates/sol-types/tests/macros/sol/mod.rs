@@ -1,5 +1,5 @@
-use alloy_primitives::{b256, bytes, hex, keccak256, Address, I256, U256};
-use alloy_sol_types::{sol, SolCall, SolError, SolEvent, SolStruct, SolType};
+use linera_alloy_primitives::{b256, bytes, hex, keccak256, Address, I256, U256};
+use linera_alloy_sol_types::{sol, SolCall, SolError, SolEvent, SolStruct, SolType};
 use serde::Serialize;
 use serde_json::Value;
 
@@ -60,7 +60,7 @@ fn e2e() {
     let mvt = MyValueType::from(U256::from(1));
     assert_eq!(
         mvt.abi_encode(),
-        alloy_sol_types::sol_data::Uint::<256>::abi_encode(&U256::from(1))
+        linera_alloy_sol_types::sol_data::Uint::<256>::abi_encode(&U256::from(1))
     );
 }
 
@@ -391,7 +391,7 @@ fn enum_variant_attrs() {
 fn nested_items() {
     // This has to be in a module (not a function) because of Rust import rules
     mod nested {
-        alloy_sol_types::sol! {
+        linera_alloy_sol_types::sol! {
             #[derive(Debug, PartialEq)]
             struct FilAddress {
                 bytes data;

@@ -662,7 +662,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove unwrap in decode_populate ([#172](https://github.com/alloy-rs/core/issues/172))
 - [sol-types] Empty data decode ([#159](https://github.com/alloy-rs/core/issues/159))
 - Doc in dyn-abi ([#155](https://github.com/alloy-rs/core/issues/155))
-- [alloy-primitives] Fix broken documentation link ([#152](https://github.com/alloy-rs/core/issues/152))
+- [linera-alloy-primitives] Fix broken documentation link ([#152](https://github.com/alloy-rs/core/issues/152))
 
 ### Documentation
 
@@ -901,18 +901,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add custom sol structs to tests and docs
 - Clean up some type check and add a couple new ones
 
-[`dyn-abi`]: https://crates.io/crates/alloy-dyn-abi
-[dyn-abi]: https://crates.io/crates/alloy-dyn-abi
-[`json-abi`]: https://crates.io/crates/alloy-json-abi
-[json-abi]: https://crates.io/crates/alloy-json-abi
-[`primitives`]: https://crates.io/crates/alloy-primitives
-[primitives]: https://crates.io/crates/alloy-primitives
-[`sol-macro`]: https://crates.io/crates/alloy-sol-macro
-[sol-macro]: https://crates.io/crates/alloy-sol-macro
-[`sol-type-parser`]: https://crates.io/crates/alloy-sol-type-parser
-[sol-type-parser]: https://crates.io/crates/alloy-sol-type-parser
-[`sol-types`]: https://crates.io/crates/alloy-sol-types
-[sol-types]: https://crates.io/crates/alloy-sol-types
+[`dyn-abi`]: https://crates.io/crates/linera-alloy-dyn-abi
+[dyn-abi]: https://crates.io/crates/linera-alloy-dyn-abi
+[`json-abi`]: https://crates.io/crates/linera-alloy-json-abi
+[json-abi]: https://crates.io/crates/linera-alloy-json-abi
+[`primitives`]: https://crates.io/crates/linera-alloy-primitives
+[primitives]: https://crates.io/crates/linera-alloy-primitives
+[`sol-macro`]: https://crates.io/crates/linera-alloy-sol-macro
+[sol-macro]: https://crates.io/crates/linera-alloy-sol-macro
+[`sol-type-parser`]: https://crates.io/crates/linera-alloy-sol-type-parser
+[sol-type-parser]: https://crates.io/crates/linera-alloy-sol-type-parser
+[`sol-types`]: https://crates.io/crates/linera-alloy-sol-types
+[sol-types]: https://crates.io/crates/linera-alloy-sol-types
 [`syn-solidity`]: https://crates.io/crates/syn-solidity
 [syn-solidity]: https://crates.io/crates/syn-solidity
 

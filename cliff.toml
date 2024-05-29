@@ -26,18 +26,18 @@ body = """
 """
 trim = true
 footer = """
-[`dyn-abi`]: https://crates.io/crates/alloy-dyn-abi
-[dyn-abi]: https://crates.io/crates/alloy-dyn-abi
-[`json-abi`]: https://crates.io/crates/alloy-json-abi
-[json-abi]: https://crates.io/crates/alloy-json-abi
-[`primitives`]: https://crates.io/crates/alloy-primitives
-[primitives]: https://crates.io/crates/alloy-primitives
-[`sol-macro`]: https://crates.io/crates/alloy-sol-macro
-[sol-macro]: https://crates.io/crates/alloy-sol-macro
-[`sol-type-parser`]: https://crates.io/crates/alloy-sol-type-parser
-[sol-type-parser]: https://crates.io/crates/alloy-sol-type-parser
-[`sol-types`]: https://crates.io/crates/alloy-sol-types
-[sol-types]: https://crates.io/crates/alloy-sol-types
+[`dyn-abi`]: https://crates.io/crates/linera-alloy-dyn-abi
+[dyn-abi]: https://crates.io/crates/linera-alloy-dyn-abi
+[`json-abi`]: https://crates.io/crates/linera-alloy-json-abi
+[json-abi]: https://crates.io/crates/linera-alloy-json-abi
+[`primitives`]: https://crates.io/crates/linera-alloy-primitives
+[primitives]: https://crates.io/crates/linera-alloy-primitives
+[`sol-macro`]: https://crates.io/crates/linera-alloy-sol-macro
+[sol-macro]: https://crates.io/crates/linera-alloy-sol-macro
+[`sol-type-parser`]: https://crates.io/crates/linera-alloy-sol-type-parser
+[sol-type-parser]: https://crates.io/crates/linera-alloy-sol-type-parser
+[`sol-types`]: https://crates.io/crates/linera-alloy-sol-types
+[sol-types]: https://crates.io/crates/linera-alloy-sol-types
 [`syn-solidity`]: https://crates.io/crates/syn-solidity
 [syn-solidity]: https://crates.io/crates/syn-solidity
 

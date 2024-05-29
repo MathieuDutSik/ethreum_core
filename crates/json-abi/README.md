@@ -1,4 +1,4 @@
-# alloy-json-abi
+# linera-alloy-json-abi
 
 Full Ethereum [JSON-ABI] implementation.
 
@@ -17,7 +17,7 @@ differences:
 Parse a JSON ABI file into a `JsonAbi` struct:
 
 ```rust
-use alloy_json_abi::JsonAbi;
+use linera_alloy_json_abi::JsonAbi;
 
 # stringify!(
 let path = "path/to/abi.json";

@@ -30,7 +30,7 @@
 #[allow(unused_imports)]
 extern crate alloc;
 
-pub extern crate alloy_sol_type_parser as parser;
+pub extern crate linera_alloy_sol_type_parser as parser;
 
 mod abi;
 pub use abi::{ContractObject, IntoItems, Items, JsonAbi};

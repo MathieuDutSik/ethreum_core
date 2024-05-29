@@ -1,5 +1,5 @@
-use alloy_primitives::{hex, Address, U256};
-use alloy_sol_types::{sol, SolEnum, SolType};
+use linera_alloy_primitives::{hex, Address, U256};
+use linera_alloy_sol_types::{sol, SolEnum, SolType};
 
 sol! {
     struct Foo {

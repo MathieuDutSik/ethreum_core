@@ -1974,7 +1974,7 @@ error[E0609]: no field `self` on type `&selfCall`
 10 |             function $kw(uint $kw);
    |                               ^^^ unknown field
 
-error[E0609]: no field `Self` on type `(alloy_sol_types::private::Uint<256, 4>,)`
+error[E0609]: no field `Self` on type `(linera_alloy_sol_types::private::Uint<256, 4>,)`
  --> tests/ui/keywords.rs:7:22
   |
 7 |                 uint $kw;

@@ -1,10 +1,10 @@
 use crate::{DynSolValue, DynToken, Error, Result, SolType, Specifier, Word};
 use alloc::{borrow::Cow, boxed::Box, string::String, vec::Vec};
-use alloy_primitives::{
+use linera_alloy_primitives::{
     try_vec,
     utils::{box_try_new, vec_try_with_capacity},
 };
-use alloy_sol_types::{abi::Decoder, sol_data};
+use linera_alloy_sol_types::{abi::Decoder, sol_data};
 use core::{fmt, iter::zip, num::NonZeroUsize, str::FromStr};
 use parser::TypeSpecifier;
 
@@ -35,7 +35,7 @@ pub(crate) use as_tuple;
 /// Parsing Solidity type strings:
 ///
 /// ```
-/// use alloy_dyn_abi::DynSolType;
+/// use linera_alloy_dyn_abi::DynSolType;
 ///
 /// let type_name = "(bool,address)[]";
 /// let ty = DynSolType::parse(type_name)?;
@@ -50,14 +50,14 @@ pub(crate) use as_tuple;
 /// // alternatively, you can use the FromStr impl
 /// let ty2 = type_name.parse::<DynSolType>()?;
 /// assert_eq!(ty, ty2);
-/// # Ok::<_, alloy_dyn_abi::Error>(())
+/// # Ok::<_, linera_alloy_dyn_abi::Error>(())
 /// ```
 ///
 /// Decoding dynamic types:
 ///
 /// ```
-/// use alloy_dyn_abi::{DynSolType, DynSolValue};
-/// use alloy_primitives::U256;
+/// use linera_alloy_dyn_abi::{DynSolType, DynSolValue};
+/// use linera_alloy_primitives::U256;
 ///
 /// let my_type = DynSolType::Uint(256);
 /// let my_data: DynSolValue = U256::from(183u64).into();
@@ -74,7 +74,7 @@ pub(crate) use as_tuple;
 /// let decoded = my_type.abi_decode(&encoded)?;
 ///
 /// assert_eq!(decoded, my_data);
-/// # Ok::<_, alloy_dyn_abi::Error>(())
+/// # Ok::<_, linera_alloy_dyn_abi::Error>(())
 /// ```
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum DynSolType {
@@ -137,7 +137,7 @@ impl DynSolType {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_dyn_abi::DynSolType;
+    /// # use linera_alloy_dyn_abi::DynSolType;
     /// let type_name = "uint256";
     /// let ty = DynSolType::parse(type_name)?;
     /// assert_eq!(ty, DynSolType::Uint(256));
@@ -147,7 +147,7 @@ impl DynSolType {
     /// // alternatively, you can use the FromStr impl
     /// let ty2 = type_name.parse::<DynSolType>()?;
     /// assert_eq!(ty2, ty);
-    /// # Ok::<_, alloy_dyn_abi::Error>(())
+    /// # Ok::<_, linera_alloy_dyn_abi::Error>(())
     /// ```
     #[inline]
     pub fn parse(s: &str) -> Result<Self> {
@@ -598,7 +598,7 @@ impl DynSolType {
         }
 
         if decoder.remaining_words() < self.minimum_words() {
-            return Err(Error::SolTypes(alloy_sol_types::Error::Overrun));
+            return Err(Error::SolTypes(linera_alloy_sol_types::Error::Overrun));
         }
 
         let mut token = self.empty_dyn_token()?;
@@ -654,7 +654,7 @@ impl DynSolType {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use alloy_primitives::{hex, Address};
+    use linera_alloy_primitives::{hex, Address};
 
     #[test]
     fn dynamically_encodes() {
@@ -1041,7 +1041,7 @@ re-enc: {re_enc}
         // Used to eat 60 gb of memory and then crash.
         let my_type: DynSolType = "uint256[][][][][][][][][][]".parse().unwrap();
         let decoded = my_type.abi_decode(&hex::decode(payload).unwrap());
-        assert_eq!(decoded, Err(alloy_sol_types::Error::RecursionLimitExceeded(16).into()));
+        assert_eq!(decoded, Err(linera_alloy_sol_types::Error::RecursionLimitExceeded(16).into()));
 
         // https://github.com/paulmillr/micro-eth-signer/discussions/20
         let payload = &"0000000000000000000000000000000000000000000000000000000000000020\
@@ -1050,11 +1050,11 @@ re-enc: {re_enc}
             .repeat(64);
         let my_type: DynSolType = "uint256[][][][][][][][][][]".parse().unwrap();
         let decoded = my_type.abi_decode(&hex::decode(payload).unwrap());
-        assert_eq!(decoded, Err(alloy_sol_types::Error::RecursionLimitExceeded(16).into()));
+        assert_eq!(decoded, Err(linera_alloy_sol_types::Error::RecursionLimitExceeded(16).into()));
 
         let my_type: DynSolType = "bytes[][][][][][][][][][]".parse().unwrap();
         let decoded = my_type.abi_decode(&hex::decode(payload).unwrap());
-        assert_eq!(decoded, Err(alloy_sol_types::Error::RecursionLimitExceeded(16).into()));
+        assert_eq!(decoded, Err(linera_alloy_sol_types::Error::RecursionLimitExceeded(16).into()));
     }
 
     // https://github.com/alloy-rs/core/issues/490
@@ -1065,14 +1065,14 @@ re-enc: {re_enc}
         // Used to eat 60 gb of memory.
         let my_type: DynSolType = "uint32[1][]".parse().unwrap();
         let decoded = my_type.abi_decode(&hex::decode(payload).unwrap());
-        assert_eq!(decoded, Err(alloy_sol_types::Error::Overrun.into()))
+        assert_eq!(decoded, Err(linera_alloy_sol_types::Error::Overrun.into()))
     }
 
     #[test]
     fn fixed_array_dos() {
         let t = "uint32[9999999999]".parse::<DynSolType>().unwrap();
         let decoded = t.abi_decode(&[]);
-        assert_eq!(decoded, Err(alloy_sol_types::Error::Overrun.into()))
+        assert_eq!(decoded, Err(linera_alloy_sol_types::Error::Overrun.into()))
     }
 
     macro_rules! packed_tests {

@@ -9,7 +9,7 @@
 
 use crate::abi;
 use alloc::{borrow::Cow, boxed::Box, collections::TryReserveError, string::String};
-use alloy_primitives::LogData;
+use linera_alloy_primitives::LogData;
 use core::fmt;
 
 /// ABI result type.
@@ -64,7 +64,7 @@ pub enum Error {
         /// The type name.
         name: &'static str,
         /// The unknown selector.
-        selector: alloy_primitives::FixedBytes<4>,
+        selector: linera_alloy_primitives::FixedBytes<4>,
     },
 
     /// Hex error.

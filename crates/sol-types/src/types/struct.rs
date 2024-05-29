@@ -4,7 +4,7 @@
 use super::SolType;
 use crate::Eip712Domain;
 use alloc::{borrow::Cow, string::String, vec::Vec};
-use alloy_primitives::{keccak256, B256};
+use linera_alloy_primitives::{keccak256, B256};
 
 /// A Solidity struct.
 ///
@@ -87,7 +87,7 @@ pub trait SolStruct: SolType<RustType = Self> {
     /// Hashes this struct according to [EIP-712 `hashStruct`](https://eips.ethereum.org/EIPS/eip-712#definition-of-hashstruct).
     #[inline]
     fn eip712_hash_struct(&self) -> B256 {
-        let mut hasher = alloy_primitives::Keccak256::new();
+        let mut hasher = linera_alloy_primitives::Keccak256::new();
         hasher.update(self.eip712_type_hash());
         hasher.update(self.eip712_encode_data());
         hasher.finalize()

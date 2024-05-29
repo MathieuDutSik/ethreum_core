@@ -5,7 +5,7 @@ use crate::{
     expand::ty::expand_rust_type,
     utils::{self, ExprArray},
 };
-use alloy_sol_macro_input::{ContainsSolAttrs, SolAttrs};
+use linera_alloy_sol_macro_input::{ContainsSolAttrs, SolAttrs};
 use ast::{
     EventParameter, File, Item, ItemError, ItemEvent, ItemFunction, Parameters, SolIdent, SolPath,
     Spanned, Type, VariableDeclaration, Visit,
@@ -43,7 +43,7 @@ const RESOLVE_LIMIT: usize = 32;
 
 /// The [`sol!`] expansion implementation.
 ///
-/// [`sol!`]: https://docs.rs/alloy-sol-macro/latest/alloy_sol_macro/index.html
+/// [`sol!`]: https://docs.rs/linera-alloy-sol-macro/latest/linera_alloy_sol_macro/index.html
 pub fn expand(ast: File) -> Result<TokenStream> {
     ExpCtxt::new(&ast).expand()
 }
@@ -532,7 +532,7 @@ pub struct ExternCrates {
 impl Default for ExternCrates {
     fn default() -> Self {
         Self {
-            sol_types: parse_quote!(::alloy_sol_types),
+            sol_types: parse_quote!(::linera_alloy_sol_types),
             contract: parse_quote!(::alloy_contract),
         }
     }
@@ -540,7 +540,7 @@ impl Default for ExternCrates {
 
 impl ExternCrates {
     pub fn fill(&mut self, attrs: &SolAttrs) {
-        if let Some(sol_types) = &attrs.alloy_sol_types {
+        if let Some(sol_types) = &attrs.linera_alloy_sol_types {
             self.sol_types = sol_types.clone();
         }
         if let Some(alloy_contract) = &attrs.alloy_contract {
@@ -602,9 +602,9 @@ fn expand_from_into_tuples<P>(
 
         #[cfg(test)]
         #[allow(dead_code, unreachable_patterns)]
-        fn _type_assertion(_t: alloy_sol_types::private::AssertTypeEq<UnderlyingRustTuple>) {
+        fn _type_assertion(_t: linera_alloy_sol_types::private::AssertTypeEq<UnderlyingRustTuple>) {
             match _t {
-                alloy_sol_types::private::AssertTypeEq::<<UnderlyingSolTuple as alloy_sol_types::SolType>::RustType>(_) => {}
+                linera_alloy_sol_types::private::AssertTypeEq::<<UnderlyingSolTuple as linera_alloy_sol_types::SolType>::RustType>(_) => {}
             }
         }
 
@@ -676,7 +676,7 @@ fn tokenize_<'a>(
         let ty = expand_type(ty, &cx.crates);
         let name = name.cloned().unwrap_or_else(|| generate_name(i).into());
         quote! {
-            <#ty as alloy_sol_types::SolType>::tokenize(&self.#name)
+            <#ty as linera_alloy_sol_types::SolType>::tokenize(&self.#name)
         }
     });
     quote! {

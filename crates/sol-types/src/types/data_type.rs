@@ -10,7 +10,7 @@
 
 use crate::{abi::token::*, private::SolTypeValue, utils, SolType, Word};
 use alloc::{string::String as RustString, vec::Vec};
-use alloy_primitives::{
+use linera_alloy_primitives::{
     keccak256, Address as RustAddress, Bytes as RustBytes, FixedBytes as RustFixedBytes,
     Function as RustFunction, I256, U256,
 };
@@ -1125,7 +1125,7 @@ impl NameBuffer {
 mod tests {
     use super::*;
     use crate::{sol, SolValue};
-    use alloy_primitives::hex;
+    use linera_alloy_primitives::hex;
 
     #[test]
     fn sol_names() {
@@ -1326,11 +1326,11 @@ mod tests {
 
                 assert_eq!(
                     <Uint<$n>>::tokenize(&uint),
-                    WordToken::new(alloy_primitives::hex!($l))
+                    WordToken::new(linera_alloy_primitives::hex!($l))
                 );
                 assert_eq!(
                     <Int<$n>>::tokenize(&int),
-                    WordToken::new(alloy_primitives::hex!($l))
+                    WordToken::new(linera_alloy_primitives::hex!($l))
                 );
             )+};
         }

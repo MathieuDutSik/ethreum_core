@@ -15,7 +15,7 @@ pub enum SolInputKind {
     Sol(ast::File),
     /// JSON ABI file
     #[cfg(feature = "json")]
-    Json(Ident, alloy_json_abi::ContractObject),
+    Json(Ident, linera_alloy_json_abi::ContractObject),
 }
 
 impl Parse for SolInputKind {

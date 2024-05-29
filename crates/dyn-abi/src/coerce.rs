@@ -1,7 +1,7 @@
 use crate::{dynamic::ty::as_tuple, DynSolType, DynSolValue, Result};
 use alloc::vec::Vec;
-use alloy_primitives::{Address, Function, Sign, I256, U256};
-use alloy_sol_types::Word;
+use linera_alloy_primitives::{Address, Function, Sign, I256, U256};
+use linera_alloy_sol_types::Word;
 use core::fmt;
 use hex::FromHexError;
 use parser::utils::{array_parser, char_parser, spanned};
@@ -50,8 +50,8 @@ impl DynSolType {
     /// # Examples
     ///
     /// ```
-    /// use alloy_dyn_abi::{DynSolType, DynSolValue};
-    /// use alloy_primitives::U256;
+    /// use linera_alloy_dyn_abi::{DynSolType, DynSolValue};
+    /// use linera_alloy_primitives::U256;
     ///
     /// let ty: DynSolType = "(uint256,string)[]".parse()?;
     /// let value = ty.coerce_str("[(0, \"hello\"), (42, \"world\")]")?;
@@ -70,7 +70,7 @@ impl DynSolType {
     /// );
     /// assert!(value.matches(&ty));
     /// assert_eq!(value.as_type().unwrap(), ty);
-    /// # Ok::<_, alloy_dyn_abi::Error>(())
+    /// # Ok::<_, linera_alloy_dyn_abi::Error>(())
     /// ```
     #[doc(alias = "tokenize")] // from ethabi
     pub fn coerce_str(&self, s: &str) -> Result<DynSolValue> {
@@ -502,7 +502,7 @@ mod tests {
         boxed::Box,
         string::{String, ToString},
     };
-    use alloy_primitives::address;
+    use linera_alloy_primitives::address;
     use core::str::FromStr;
 
     #[track_caller]

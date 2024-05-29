@@ -3,7 +3,7 @@ use crate::{
     AbiItem, Constructor, Error, Event, Fallback, Function, Receive,
 };
 use alloc::{collections::btree_map, string::String, vec::Vec};
-use alloy_primitives::Bytes;
+use linera_alloy_primitives::Bytes;
 use btree_map::BTreeMap;
 use core::{fmt, iter, iter::Flatten};
 use serde::{
@@ -76,7 +76,7 @@ impl JsonAbi {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_json_abi::JsonAbi;
+    /// # use linera_alloy_json_abi::JsonAbi;
     /// assert_eq!(JsonAbi::parse([])?, JsonAbi::new());
     ///
     /// let abi = JsonAbi::parse([
@@ -91,7 +91,7 @@ impl JsonAbi {
     ///     "event PersonAdded(uint indexed id, tuple(string, uint16) person)",
     /// ])?;
     /// assert_eq!(abi.len(), 9);
-    /// # Ok::<(), alloy_sol_type_parser::Error>(())
+    /// # Ok::<(), linera_alloy_sol_type_parser::Error>(())
     /// ```
     pub fn parse<'a, I: IntoIterator<Item = &'a str>>(strings: I) -> parser::Result<Self> {
         let mut abi = Self::new();

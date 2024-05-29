@@ -1,6 +1,6 @@
 use crate::{param::Param, serde_state_mutability_compat, utils::*, EventParam, StateMutability};
 use alloc::{borrow::Cow, string::String, vec::Vec};
-use alloy_primitives::{keccak256, Selector, B256};
+use linera_alloy_primitives::{keccak256, Selector, B256};
 use core::str::FromStr;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
@@ -147,7 +147,7 @@ impl AbiItem<'_> {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_json_abi::{AbiItem, Function, Param};
+    /// # use linera_alloy_json_abi::{AbiItem, Function, Param};
     /// assert_eq!(
     ///     AbiItem::parse("function foo(bool bar)"),
     ///     Ok(AbiItem::from(Function::parse("foo(bool bar)").unwrap()).into()),
@@ -338,7 +338,7 @@ impl Constructor {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_json_abi::{Constructor, Param, StateMutability};
+    /// # use linera_alloy_json_abi::{Constructor, Param, StateMutability};
     /// assert_eq!(
     ///     Constructor::parse("constructor(uint foo, address bar)"),
     ///     Ok(Constructor {
@@ -387,7 +387,7 @@ impl Error {
     /// Basic usage:
     ///
     /// ```
-    /// # use alloy_json_abi::{Error, Param, StateMutability};
+    /// # use linera_alloy_json_abi::{Error, Param, StateMutability};
     /// assert_eq!(
     ///     Error::parse("foo(bool bar)"),
     ///     Ok(Error { name: "foo".to_string(), inputs: vec![Param::parse("bool bar").unwrap()] }),
@@ -450,7 +450,7 @@ impl Function {
     /// Basic usage:
     ///
     /// ```
-    /// # use alloy_json_abi::{Function, Param, StateMutability};
+    /// # use linera_alloy_json_abi::{Function, Param, StateMutability};
     /// assert_eq!(
     ///     Function::parse("foo(bool bar)"),
     ///     Ok(Function {
@@ -465,7 +465,7 @@ impl Function {
     /// [Function]s also support parsing output parameters:
     ///
     /// ```
-    /// # use alloy_json_abi::{Function, Param, StateMutability};
+    /// # use linera_alloy_json_abi::{Function, Param, StateMutability};
     /// assert_eq!(
     ///     Function::parse("function toString(uint number) returns (string s)"),
     ///     Ok(Function {
@@ -543,7 +543,7 @@ impl Event {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_json_abi::{Event, EventParam};
+    /// # use linera_alloy_json_abi::{Event, EventParam};
     /// assert_eq!(
     ///     Event::parse("event foo(bool bar, uint indexed baz)"),
     ///     Ok(Event {

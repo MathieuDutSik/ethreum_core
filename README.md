@@ -23,26 +23,26 @@ feature-parity in Alloy. No action is currently needed from devs.
 This repository contains the following crates:
 
 - [`linera-alloy-core`]: Meta-crate for the entire project
-- [`alloy-primitives`] - Primitive integer and byte types
-- [`alloy-sol-types`] - Compile-time [ABI] and [EIP-712] implementations
-- [`alloy-sol-macro`] - The [`sol!`] procedural macro
-- [`alloy-dyn-abi`] - Run-time [ABI] and [EIP-712] implementations
-- [`alloy-json-abi`] - Full Ethereum [JSON-ABI] implementation
-- [`alloy-sol-type-parser`] - A simple parser for Solidity type strings
+- [`linera-alloy-primitives`] - Primitive integer and byte types
+- [`linera-alloy-sol-types`] - Compile-time [ABI] and [EIP-712] implementations
+- [`linera-alloy-sol-macro`] - The [`sol!`] procedural macro
+- [`linera-alloy-dyn-abi`] - Run-time [ABI] and [EIP-712] implementations
+- [`linera-alloy-json-abi`] - Full Ethereum [JSON-ABI] implementation
+- [`linera-alloy-sol-type-parser`] - A simple parser for Solidity type strings
 - [`syn-solidity`] - [`syn`]-powered Solidity parser
 
 [`linera-alloy-core`]: https://github.com/alloy-rs/core/tree/main/crates/core
-[`alloy-primitives`]: https://github.com/alloy-rs/core/tree/main/crates/primitives
-[`alloy-sol-types`]: https://github.com/alloy-rs/core/tree/main/crates/sol-types
-[`alloy-sol-macro`]: https://github.com/alloy-rs/core/tree/main/crates/sol-macro
-[`alloy-dyn-abi`]: https://github.com/alloy-rs/core/tree/main/crates/dyn-abi
-[`alloy-json-abi`]: https://github.com/alloy-rs/core/tree/main/crates/json-abi
-[`alloy-sol-type-parser`]: https://github.com/alloy-rs/core/tree/main/crates/sol-type-parser
+[`linera-alloy-primitives`]: https://github.com/alloy-rs/core/tree/main/crates/primitives
+[`linera-alloy-sol-types`]: https://github.com/alloy-rs/core/tree/main/crates/sol-types
+[`linera-alloy-sol-macro`]: https://github.com/alloy-rs/core/tree/main/crates/sol-macro
+[`linera-alloy-dyn-abi`]: https://github.com/alloy-rs/core/tree/main/crates/dyn-abi
+[`linera-alloy-json-abi`]: https://github.com/alloy-rs/core/tree/main/crates/json-abi
+[`linera-alloy-sol-type-parser`]: https://github.com/alloy-rs/core/tree/main/crates/sol-type-parser
 [`syn-solidity`]: https://github.com/alloy-rs/core/tree/main/crates/syn-solidity
 [JSON-ABI]: https://docs.soliditylang.org/en/latest/abi-spec.html#json
 [ABI]: https://docs.soliditylang.org/en/latest/abi-spec.html
 [EIP-712]: https://eips.ethereum.org/EIPS/eip-712
-[`sol!`]: https://docs.rs/alloy-sol-macro/latest/alloy_sol_macro/macro.sol.html
+[`sol!`]: https://docs.rs/linera-alloy-sol-macro/latest/linera_alloy_sol_macro/macro.sol.html
 [`syn`]: https://github.com/dtolnay/syn
 
 ## Supported Rust Versions

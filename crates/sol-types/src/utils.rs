@@ -75,7 +75,7 @@ pub(crate) fn as_offset(word: &Word, validate: bool) -> Result<usize> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use alloy_primitives::b256;
+    use linera_alloy_primitives::b256;
 
     #[test]
     fn test_words_for() {

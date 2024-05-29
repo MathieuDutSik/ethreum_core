@@ -66,7 +66,7 @@ wrap_fixed_bytes!(
     /// Parsing and formatting:
     ///
     /// ```
-    /// use alloy_primitives::{address, Address};
+    /// use linera_alloy_primitives::{address, Address};
     ///
     /// let checksummed = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045";
     /// let expected = address!("d8da6bf26964af9d7eed9e03e53415d37aa96045");
@@ -123,7 +123,7 @@ impl Address {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_primitives::{address, b256, Address};
+    /// # use linera_alloy_primitives::{address, b256, Address};
     /// let word = b256!("000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045");
     /// assert_eq!(Address::from_word(word), address!("d8da6bf26964af9d7eed9e03e53415d37aa96045"));
     /// ```
@@ -138,7 +138,7 @@ impl Address {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_primitives::{address, b256, Address};
+    /// # use linera_alloy_primitives::{address, b256, Address};
     /// assert_eq!(
     ///     address!("d8da6bf26964af9d7eed9e03e53415d37aa96045").into_word(),
     ///     b256!("000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"),
@@ -169,7 +169,7 @@ impl Address {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_primitives::{address, Address};
+    /// # use linera_alloy_primitives::{address, Address};
     /// let checksummed = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045";
     /// let address = Address::parse_checksummed(checksummed, None).unwrap();
     /// let expected = address!("d8da6bf26964af9d7eed9e03e53415d37aa96045");
@@ -208,7 +208,7 @@ impl Address {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_primitives::{address, Address};
+    /// # use linera_alloy_primitives::{address, Address};
     /// let address = address!("d8da6bf26964af9d7eed9e03e53415d37aa96045");
     ///
     /// let checksummed: String = address.to_checksum(None);
@@ -242,7 +242,7 @@ impl Address {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_primitives::{address, Address};
+    /// # use linera_alloy_primitives::{address, Address};
     /// let address = address!("d8da6bf26964af9d7eed9e03e53415d37aa96045");
     /// let mut buf = [0; 42];
     ///
@@ -273,7 +273,7 @@ impl Address {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_primitives::{address, Address, AddressChecksumBuffer};
+    /// # use linera_alloy_primitives::{address, Address, AddressChecksumBuffer};
     /// let address = address!("d8da6bf26964af9d7eed9e03e53415d37aa96045");
     ///
     /// let mut buffer: AddressChecksumBuffer = address.to_checksum_buffer(None);
@@ -326,7 +326,7 @@ impl Address {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_primitives::{address, Address};
+    /// # use linera_alloy_primitives::{address, Address};
     /// let sender = address!("b20a608c624Ca5003905aA834De7156C68b2E1d0");
     ///
     /// let expected = address!("00000000219ab540356cBB839Cbe05303d7705Fa");
@@ -378,7 +378,7 @@ impl Address {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_primitives::{address, b256, bytes, Address};
+    /// # use linera_alloy_primitives::{address, b256, bytes, Address};
     /// let address = address!("8ba1f109551bD432803012645Ac136ddd64DBA72");
     /// let salt = b256!("7c5ea36004851c764c44143b1dcb59679b11c9a68e5f41497f6cf3d480715331");
     /// let init_code = bytes!("6394198df16000526103ff60206004601c335afa6040516060f3");
@@ -409,7 +409,7 @@ impl Address {
     /// # Examples
     ///
     /// ```
-    /// # use alloy_primitives::{address, b256, Address};
+    /// # use linera_alloy_primitives::{address, b256, Address};
     /// let address = address!("5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f");
     /// let salt = b256!("2b2f5776e38002e0c013d0d89828fdb06fee595ea2d5ed4b194e3883e823e350");
     /// let init_code_hash = b256!("96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f");

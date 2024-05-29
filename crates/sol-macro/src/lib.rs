@@ -1,11 +1,11 @@
-//! # alloy-sol-macro
+//! # linera-alloy-sol-macro
 //!
 //! This crate provides the [`sol!`] procedural macro, which parses Solidity
-//! syntax to generate types that implement [`alloy-sol-types`] traits.
+//! syntax to generate types that implement [`linera-alloy-sol-types`] traits.
 //!
 //! Refer to the [macro's documentation](sol!) for more information.
 //!
-//! [`alloy-sol-types`]: https://docs.rs/alloy-sol-types
+//! [`linera-alloy-sol-types`]: https://docs.rs/linera-alloy-sol-types
 
 #![doc(
     html_logo_url = "https://raw.githubusercontent.com/alloy-rs/core/main/assets/alloy.jpg",
@@ -19,13 +19,13 @@
 #[macro_use]
 extern crate proc_macro_error;
 
-use alloy_sol_macro_expander::expand;
-use alloy_sol_macro_input::{SolAttrs, SolInput, SolInputExpander, SolInputKind};
+use linera_alloy_sol_macro_expander::expand;
+use linera_alloy_sol_macro_input::{SolAttrs, SolInput, SolInputExpander, SolInputKind};
 use proc_macro::TokenStream;
 use quote::quote;
 use syn::parse_macro_input;
 
-/// Generate types that implement [`alloy-sol-types`] traits, which can be used
+/// Generate types that implement [`linera-alloy-sol-types`] traits, which can be used
 /// for type-safe [ABI] and [EIP-712] serialization to interface with Ethereum
 /// smart contracts.
 ///
@@ -39,11 +39,11 @@ use syn::parse_macro_input;
 /// # Examples
 ///
 /// > Note: the following example code blocks cannot be tested here because the
-/// > generated code references [`alloy-sol-types`], so they are [tested in that
+/// > generated code references [`linera-alloy-sol-types`], so they are [tested in that
 /// > crate][tests] and included with [`include_str!`] in this doc instead.
 ///
 /// [tests]: https://github.com/alloy-rs/core/tree/main/crates/sol-types/tests/doctests
-/// [`alloy-sol-types`]: https://docs.rs/alloy-sol-types
+/// [`linera-alloy-sol-types`]: https://docs.rs/linera-alloy-sol-types
 ///
 /// There are two main ways to use this macro:
 /// - you can [write Solidity code](#solidity), or provide a path to a Solidity file,
@@ -118,7 +118,7 @@ use syn::parse_macro_input;
 ///     - `pub fn <eventName>_filter(&self) -> Event<P, eventName>` for each event in the contract
 ///   - `pub fn new ...`, same as above just as a free function in the contract module
 /// - `abi [ = <bool = false>]`: generates functions which return the dynamic ABI representation
-///   (provided by [`alloy_json_abi`](https://docs.rs/alloy-json-abi)) of all the generated items.
+///   (provided by [`linera_alloy_json_abi`](https://docs.rs/linera-alloy-json-abi)) of all the generated items.
 ///   Requires the `"json"` feature. For:
 ///   - contracts: generates an `abi` module nested inside of the contract module, which contains:
 ///     - `pub fn contract() -> JsonAbi`,
@@ -129,9 +129,9 @@ use syn::parse_macro_input;
 ///     - `pub fn events() -> BTreeMap<String, Vec<Event>>`
 ///     - `pub fn errors() -> BTreeMap<String, Vec<Error>>`
 ///   - items: generates implementations of the `SolAbiExt` trait, alongside the existing
-///     [`alloy-sol-types`] traits
-/// - `alloy_sol_types = <path = ::alloy_sol_types>` (inner attribute only): specifies the path to
-///   the required dependency [`alloy-sol-types`].
+///     [`linera-alloy-sol-types`] traits
+/// - `linera_alloy_sol_types = <path = ::linera_alloy_sol_types>` (inner attribute only): specifies the path to
+///   the required dependency [`linera-alloy-sol-types`].
 /// - `alloy_contract = <path = ::alloy_contract>` (inner attribute only): specifies the path to the
 ///   optional dependency [`alloy-contract`]. This is only used by the `rpc` attribute.
 /// - `all_derives [ = <bool = false>]`: adds all possible `#[derive(...)]` attributes to all
@@ -239,7 +239,7 @@ use syn::parse_macro_input;
 #[proc_macro]
 #[proc_macro_error]
 pub fn sol(input: TokenStream) -> TokenStream {
-    let input = parse_macro_input!(input as alloy_sol_macro_input::SolInput);
+    let input = parse_macro_input!(input as linera_alloy_sol_macro_input::SolInput);
 
     SolMacroExpander.expand(&input).unwrap_or_else(syn::Error::into_compile_error).into()
 }

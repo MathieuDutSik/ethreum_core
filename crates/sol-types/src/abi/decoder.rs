@@ -329,7 +329,7 @@ pub fn decode_sequence<'de, T: TokenSeq<'de>>(data: &'de [u8], validate: bool) -
 mod tests {
     use crate::{sol, sol_data, utils::pad_usize, SolType, SolValue};
     use alloc::string::ToString;
-    use alloy_primitives::{address, bytes, hex, Address, B256, U256};
+    use linera_alloy_primitives::{address, bytes, hex, Address, B256, U256};
 
     #[test]
     fn dynamic_array_of_dynamic_arrays() {

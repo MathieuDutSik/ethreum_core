@@ -1,6 +1,6 @@
 use super::ExpCtxt;
 use crate::verbatim::Verbatim;
-use alloy_json_abi::{
+use linera_alloy_json_abi::{
     Constructor, Error, Event, EventParam, Fallback, Function, Param, Receive, StateMutability,
 };
 use ast::{ItemError, ItemEvent, ItemFunction};

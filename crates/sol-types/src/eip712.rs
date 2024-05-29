@@ -1,6 +1,6 @@
 use crate::SolValue;
 use alloc::{borrow::Cow, string::String, vec::Vec};
-use alloy_primitives::{keccak256, Address, FixedBytes, B256, U256};
+use linera_alloy_primitives::{keccak256, Address, FixedBytes, B256, U256};
 
 /// EIP-712 domain attributes used in determining the domain separator.
 ///
@@ -159,7 +159,7 @@ impl Eip712Domain {
     /// Hashes this domain according to [EIP-712 `hashStruct`](https://eips.ethereum.org/EIPS/eip-712#definition-of-hashstruct).
     #[inline]
     pub fn hash_struct(&self) -> B256 {
-        let mut hasher = alloy_primitives::Keccak256::new();
+        let mut hasher = linera_alloy_primitives::Keccak256::new();
         hasher.update(self.type_hash());
         hasher.update(self.encode_data());
         hasher.finalize()
@@ -183,8 +183,8 @@ impl Eip712Domain {
 /// # Examples
 ///
 /// ```
-/// # use alloy_sol_types::{Eip712Domain, eip712_domain};
-/// # use alloy_primitives::keccak256;
+/// # use linera_alloy_sol_types::{Eip712Domain, eip712_domain};
+/// # use linera_alloy_primitives::keccak256;
 /// const MY_DOMAIN: Eip712Domain = eip712_domain! {
 ///     name: "MyCoolProtocol",
 /// };

@@ -1,8 +1,8 @@
 use super::ty::as_tuple;
 use crate::{DynSolType, DynToken, Word};
 use alloc::{borrow::Cow, boxed::Box, string::String, vec::Vec};
-use alloy_primitives::{Address, Function, I256, U256};
-use alloy_sol_types::{abi::Encoder, utils::words_for_len};
+use linera_alloy_primitives::{Address, Function, I256, U256};
+use linera_alloy_sol_types::{abi::Encoder, utils::words_for_len};
 
 #[cfg(feature = "eip712")]
 macro_rules! as_fixed_seq {
@@ -27,7 +27,7 @@ macro_rules! as_fixed_seq {
 /// Basic usage:
 ///
 /// ```
-/// use alloy_dyn_abi::{DynSolType, DynSolValue};
+/// use linera_alloy_dyn_abi::{DynSolType, DynSolValue};
 ///
 /// let ty: DynSolType = "uint64".parse()?;
 /// let value: DynSolValue = 183u64.into();
@@ -36,14 +36,14 @@ macro_rules! as_fixed_seq {
 /// let decoded: DynSolValue = ty.abi_decode(&encoded)?;
 ///
 /// assert_eq!(decoded, value);
-/// # Ok::<(), alloy_dyn_abi::Error>(())
+/// # Ok::<(), linera_alloy_dyn_abi::Error>(())
 /// ```
 ///
 /// Coerce a string using [`DynSolType`]:
 ///
 /// ```
-/// use alloy_dyn_abi::{DynSolType, DynSolValue};
-/// use alloy_primitives::U256;
+/// use linera_alloy_dyn_abi::{DynSolType, DynSolValue};
+/// use linera_alloy_primitives::U256;
 ///
 /// let ty: DynSolType = "(string, uint256)".parse()?;
 #[cfg_attr(feature = "std", doc = "let value = ty.coerce_str(\"(foo bar, 2.5 gwei)\")?;")]
@@ -55,7 +55,7 @@ macro_rules! as_fixed_seq {
 ///         DynSolValue::Uint(U256::from(2_500_000_000u64), 256)
 ///     ]),
 /// );
-/// # Ok::<(), alloy_dyn_abi::Error>(())
+/// # Ok::<(), linera_alloy_dyn_abi::Error>(())
 /// ```
 #[derive(Debug, Clone, PartialEq)]
 pub enum DynSolValue {
@@ -148,9 +148,9 @@ macro_rules! impl_from_int {
                 const _: () = assert!(BYTES <= 32);
 
                 let mut word = if value.is_negative() {
-                    alloy_primitives::B256::repeat_byte(0xff)
+                    linera_alloy_primitives::B256::repeat_byte(0xff)
                 } else {
-                    alloy_primitives::B256::ZERO
+                    linera_alloy_primitives::B256::ZERO
                 };
                 word[32 - BYTES..].copy_from_slice(&value.to_be_bytes());
 
@@ -726,7 +726,7 @@ impl DynSolValue {
     /// Note that invalid value sizes will saturate to the maximum size, e.g. `Uint(x, 300)` will
     /// behave the same as `Uint(x, 256)`.
     ///
-    /// See [`SolType::abi_encode_packed`](alloy_sol_types::SolType::abi_encode_packed) for more
+    /// See [`SolType::abi_encode_packed`](linera_alloy_sol_types::SolType::abi_encode_packed) for more
     /// details.
     #[inline]
     pub fn abi_encode_packed(&self) -> Vec<u8> {
