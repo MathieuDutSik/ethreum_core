@@ -533,7 +533,7 @@ impl Default for ExternCrates {
     fn default() -> Self {
         Self {
             sol_types: parse_quote!(::linera_alloy_sol_types),
-            contract: parse_quote!(::alloy_contract),
+            contract: parse_quote!(::linera_alloy_contract),
         }
     }
 }
