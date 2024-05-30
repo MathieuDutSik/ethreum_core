@@ -402,8 +402,8 @@ mod tests {
             #[sol(linera_alloy_sol_types)] => Err("expected `=`"),
             #[sol(linera_alloy_sol_types = linera_alloy_core::sol_types)] => Ok(sol_attrs! { linera_alloy_sol_types: parse_quote!(linera_alloy_core::sol_types) }),
             #[sol(linera_alloy_sol_types = ::linera_alloy_core::sol_types)] => Ok(sol_attrs! { linera_alloy_sol_types: parse_quote!(::linera_alloy_core::sol_types) }),
-            #[sol(linera_alloy_sol_types = alloy::sol_types)] => Ok(sol_attrs! { linera_alloy_sol_types: parse_quote!(alloy::sol_types) }),
-            #[sol(linera_alloy_sol_types = ::alloy::sol_types)] => Ok(sol_attrs! { linera_alloy_sol_types: parse_quote!(::alloy::sol_types) }),
+            #[sol(linera_alloy_sol_types = linera_alloy::sol_types)] => Ok(sol_attrs! { linera_alloy_sol_types: parse_quote!(linera_alloy::sol_types) }),
+            #[sol(linera_alloy_sol_types = ::linera_alloy::sol_types)] => Ok(sol_attrs! { linera_alloy_sol_types: parse_quote!(::linera_alloy::sol_types) }),
 
             #[sol(alloy_contract)] => Err("expected `=`"),
             #[sol(alloy_contract = linera_alloy::contract)] => Ok(sol_attrs! { alloy_contract: parse_quote!(linera_alloy::contract) }),
