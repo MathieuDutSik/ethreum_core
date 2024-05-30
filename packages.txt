@@ -1,13 +1,13 @@
 # List of packages to be published on `crates.io`, in this order.
 # - Specific arguments for cargo publish or cargo package may be added on the same line.
 # - See scripts/publish.sh and scripts/test_publish.sh for usage.
-primitives
-sol-type-parser
-json-abi
-sol-macro-input
-syn-solidity
-sol-macro-expander
-sol-macro
-sol-types
-dyn-abi
-core
+linera-alloy-primitives
+linera-alloy-sol-type-parser
+linera-alloy-json-abi
+linera-alloy-sol-macro-input
+linera-alloy-syn-solidity
+linera-alloy-sol-macro-expander
+linera-alloy-sol-macro
+linera-alloy-sol-types
+linera-alloy-dyn-abi
+linera-alloy-core

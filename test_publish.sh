@@ -5,7 +5,7 @@ set -x -e
 # Usage:
 #   cargo install cargo-local-registry
 #   cargo install cargo-index
-#   grep -v '^#' ../packages.txt | ../test_publish.sh REGISTRY
+#   grep -v '^#' packages.txt | ./test_publish.sh REGISTRY
 
 # Where to store the registry.
 mkdir -p "$1"
