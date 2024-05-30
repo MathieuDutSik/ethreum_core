@@ -19,13 +19,13 @@ if [ ! -z "$(git status --porcelain)" ]; then
 fi
 
 # Synchronize the registry using `Cargo.lock`.
-(echo; echo '[source]') >> ../.cargo/config.toml
-cargo local-registry --git -s Cargo.lock "$REGISTRY" | tail -n +2 >> ../.cargo/config.toml
+(echo; echo '[source]') >> .cargo/config.toml
+cargo local-registry --git -s Cargo.lock "$REGISTRY" | tail -n +2 >> .cargo/config.toml
 
 echo "The following change was applied and should be reverted on exit:"
 git diff
 LINERA_DIR="$PWD"
-trap 'cd "$LINERA_DIR"; git checkout -f HEAD ../.cargo/config.toml' EXIT
+trap 'cd "$LINERA_DIR"; git checkout -f HEAD .cargo/config.toml' EXIT
 
 # Initialize the git repository for the index if needed. Ideally, we'd like to use `cargo
 # index init` first but the tool refuses to update an existing directory.
