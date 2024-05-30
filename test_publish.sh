@@ -36,7 +36,7 @@ git init "$REGISTRY"/index || true
 while read LINE; do
     ARGS=($LINE)
     CRATE="${ARGS[0]}"
-    CRATE_RED="${CRATE:12}$"
+    CRATE_RED="${CRATE:13}"
     CRATE_PATH="crates/$CRATE_RED"
     echo "CRATE=$CRATE"
     echo "CRATE_RED=$CRATE_RED"
