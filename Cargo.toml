@@ -8,8 +8,8 @@ edition = "2021"
 rust-version = "1.65"
 authors = ["Alloy Contributors"]
 license = "MIT OR Apache-2.0"
-homepage = "https://github.com/alloy-rs/core"
-repository = "https://github.com/alloy-rs/core"
+homepage = "https://github.com/MathieuDutSik/ethreum_core"
+repository = "https://github.com/MathieuDutSik/ethreum_core"
 exclude = ["tests"]
 
 [workspace.metadata.docs.rs]

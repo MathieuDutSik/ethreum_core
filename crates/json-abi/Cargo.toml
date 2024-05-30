@@ -3,7 +3,7 @@ name = "linera-alloy-json-abi"
 description = "Full Ethereum JSON-ABI implementation"
 keywords = ["ethereum", "abi", "json", "serde", "serialization"]
 categories = ["encoding", "cryptography::cryptocurrencies"]
-homepage = "https://github.com/alloy-rs/core/tree/main/crates/json-abi"
+homepage = "https://github.com/MathieuDutSik/ethreum_core/tree/main/crates/json-abi"
 
 version.workspace = true
 edition.workspace = true

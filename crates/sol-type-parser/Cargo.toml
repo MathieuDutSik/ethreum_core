@@ -3,7 +3,7 @@ name = "linera-alloy-sol-type-parser"
 description = "Simple and light-weight Solidity type strings parser"
 keywords = ["ethereum", "abi", "evm", "solidity", "parser"]
 categories = ["no-std", "cryptography::cryptocurrencies"]
-homepage = "https://github.com/alloy-rs/core/tree/main/crates/sol-type-parser"
+homepage = "https://github.com/MathieuDutSik/ethreum_core/tree/main/crates/sol-type-parser"
 
 version.workspace = true
 edition.workspace = true

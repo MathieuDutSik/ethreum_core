@@ -3,7 +3,7 @@ name = "linera-alloy-dyn-abi"
 description = "Run-time ABI and EIP-712 implementations"
 keywords = ["ethereum", "abi", "encoding", "evm", "solidity"]
 categories = ["no-std", "encoding", "cryptography::cryptocurrencies"]
-homepage = "https://github.com/alloy-rs/core/tree/main/crates/dyn-abi"
+homepage = "https://github.com/MathieuDutSik/ethreum_core/tree/main/crates/dyn-abi"
 
 version.workspace = true
 edition.workspace = true
