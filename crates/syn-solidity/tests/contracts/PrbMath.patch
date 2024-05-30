@@ -1,5 +1,5 @@
---- a/crates/syn-solidity/tests/contracts/PrbMath.sol
-+++ b/crates/syn-solidity/tests/contracts/PrbMath.sol
+--- a/crates/linera-alloy-syn-solidity/tests/contracts/PrbMath.sol
++++ b/crates/linera-alloy-syn-solidity/tests/contracts/PrbMath.sol
 @@ -5,7 +5,7 @@
  
  /*//////////////////////////////////////////////////////////////////////////

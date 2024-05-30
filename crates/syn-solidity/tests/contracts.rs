@@ -5,7 +5,7 @@ use std::{
     path::Path,
     process::Command,
 };
-use syn_solidity::{
+use linera_alloy_syn_solidity::{
     visit::{self, Visit},
     File,
 };
@@ -111,12 +111,12 @@ impl<'ast> Visit<'ast> for TestVisitor {
         visit::visit_file(self, file);
     }
 
-    fn visit_item_enum(&mut self, e: &'ast syn_solidity::ItemEnum) {
+    fn visit_item_enum(&mut self, e: &'ast linera_alloy_syn_solidity::ItemEnum) {
         assert!(!e.variants.is_empty());
         visit::visit_item_enum(self, e);
     }
 
-    fn visit_item_struct(&mut self, s: &'ast syn_solidity::ItemStruct) {
+    fn visit_item_struct(&mut self, s: &'ast linera_alloy_syn_solidity::ItemStruct) {
         assert!(!s.fields.is_empty());
         visit::visit_item_struct(self, s);
     }

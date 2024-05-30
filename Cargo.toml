@@ -27,7 +27,7 @@ linera-alloy-sol-macro-input = { version = "0.7.4", path = "crates/sol-macro-inp
 linera-alloy-sol-macro-expander = { version = "0.7.4", path = "crates/sol-macro-expander", default-features = false }
 linera-alloy-sol-type-parser = { version = "0.7.4", path = "crates/sol-type-parser", default-features = false }
 linera-alloy-sol-types = { version = "0.7.4", path = "crates/sol-types", default-features = false }
-syn-solidity = { version = "0.7.4", path = "crates/syn-solidity", default-features = false }
+linera-alloy-syn-solidity = { version = "0.7.4", path = "crates/syn-solidity", default-features = false }
 
 # serde
 serde = { version = "1.0", default-features = false, features = ["alloc"] }

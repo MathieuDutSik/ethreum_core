@@ -12,4 +12,4 @@ mod utils;
 #[cfg(feature = "json")]
 mod verbatim;
 
-extern crate syn_solidity as ast;
+extern crate linera_alloy_syn_solidity as ast;

@@ -1,5 +1,5 @@
---- a/crates/syn-solidity/tests/contracts/ForgeStd.sol
-+++ b/crates/syn-solidity/tests/contracts/ForgeStd.sol
+--- a/crates/linera-alloy-syn-solidity/tests/contracts/ForgeStd.sol
++++ b/crates/linera-alloy-syn-solidity/tests/contracts/ForgeStd.sol
 @@ -3132,7 +3132,7 @@ contract DSTest {
      bool private _failed;
  

@@ -19,7 +19,7 @@ rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
 linera-alloy-sol-macro-input.workspace = true
-syn-solidity = { workspace = true, features = ["visit", "visit-mut"] }
+linera-alloy-syn-solidity = { workspace = true, features = ["visit", "visit-mut"] }
 
 proc-macro2.workspace = true
 quote.workspace = true

@@ -196,49 +196,49 @@ pub trait ContainsSolAttrs {
     }
 }
 
-impl ContainsSolAttrs for syn_solidity::File {
+impl ContainsSolAttrs for linera_alloy_syn_solidity::File {
     fn attrs(&self) -> &[Attribute] {
         &self.attrs
     }
 }
 
-impl ContainsSolAttrs for syn_solidity::ItemContract {
+impl ContainsSolAttrs for linera_alloy_syn_solidity::ItemContract {
     fn attrs(&self) -> &[Attribute] {
         &self.attrs
     }
 }
 
-impl ContainsSolAttrs for syn_solidity::ItemEnum {
+impl ContainsSolAttrs for linera_alloy_syn_solidity::ItemEnum {
     fn attrs(&self) -> &[Attribute] {
         &self.attrs
     }
 }
 
-impl ContainsSolAttrs for syn_solidity::ItemError {
+impl ContainsSolAttrs for linera_alloy_syn_solidity::ItemError {
     fn attrs(&self) -> &[Attribute] {
         &self.attrs
     }
 }
 
-impl ContainsSolAttrs for syn_solidity::ItemEvent {
+impl ContainsSolAttrs for linera_alloy_syn_solidity::ItemEvent {
     fn attrs(&self) -> &[Attribute] {
         &self.attrs
     }
 }
 
-impl ContainsSolAttrs for syn_solidity::ItemFunction {
+impl ContainsSolAttrs for linera_alloy_syn_solidity::ItemFunction {
     fn attrs(&self) -> &[Attribute] {
         &self.attrs
     }
 }
 
-impl ContainsSolAttrs for syn_solidity::ItemStruct {
+impl ContainsSolAttrs for linera_alloy_syn_solidity::ItemStruct {
     fn attrs(&self) -> &[Attribute] {
         &self.attrs
     }
 }
 
-impl ContainsSolAttrs for syn_solidity::ItemUdt {
+impl ContainsSolAttrs for linera_alloy_syn_solidity::ItemUdt {
     fn attrs(&self) -> &[Attribute] {
         &self.attrs
     }

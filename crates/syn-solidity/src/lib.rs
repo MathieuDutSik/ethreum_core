@@ -96,4 +96,4 @@ pub fn parse2(input: proc_macro2::TokenStream) -> Result<File> {
     syn::parse2(input)
 }
 
-const DEBUG: bool = option_env!("SYN_SOLIDITY_DEBUG").is_some();
+const DEBUG: bool = option_env!("linera_alloy_syn_solidity_DEBUG").is_some();

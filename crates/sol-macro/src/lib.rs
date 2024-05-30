@@ -60,7 +60,7 @@ use syn::parse_macro_input;
 ///
 /// ## Solidity
 ///
-/// This macro uses [`syn-solidity`][ast] to parse Solidity-like syntax. See
+/// This macro uses [`linera-alloy-syn-solidity`][ast] to parse Solidity-like syntax. See
 /// [its documentation][ast] for more.
 ///
 /// Solidity input can be either one of the following:
@@ -77,7 +77,7 @@ use syn::parse_macro_input;
 ///
 /// [sol-item]: https://docs.soliditylang.org/en/latest/grammar.html#a4.SolidityParser.sourceUnit
 /// [sol-types]: https://docs.soliditylang.org/en/latest/types.html
-/// [ast]: https://docs.rs/syn-solidity/latest/syn_solidity
+/// [ast]: https://docs.rs/linera-alloy-syn-solidity/latest/linera_alloy_syn_solidity
 ///
 /// ### Attributes
 ///

@@ -21,7 +21,7 @@ body:
               - sol-type-parser
               - sol-types
               - sol! macro
-              - syn-solidity
+              - linera-alloy-syn-solidity
               - Other (please provide more details)
       validations:
           required: true

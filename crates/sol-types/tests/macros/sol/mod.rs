@@ -240,7 +240,7 @@ fn getters() {
 
 #[test]
 fn abigen_sol_multicall() {
-    sol!("../syn-solidity/tests/contracts/Multicall.sol");
+    sol!("../linera-alloy-syn-solidity/tests/contracts/Multicall.sol");
 
     sol! {
         // SPDX-License-Identifier: MIT

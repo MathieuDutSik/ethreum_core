@@ -19,7 +19,7 @@ heck = "0.5.0"
 hex.workspace = true
 proc-macro2.workspace = true
 syn.workspace = true
-syn-solidity.workspace = true
+linera-alloy-syn-solidity.workspace = true
 quote.workspace = true
 
 # json

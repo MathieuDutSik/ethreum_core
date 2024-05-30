@@ -67,7 +67,7 @@ needed.
 ### Why not use `syn`?
 
 This is NOT a full syntax library, and is not intended to be used as a
-replacement for [`syn-solidity`]. This crate is intended to be used for
+replacement for [`linera-alloy-syn-solidity`]. This crate is intended to be used for
 parsing type strings present in existing ecosystem tooling, and nothing else.
 It is not intended to be used for parsing Solidity source code.
 
@@ -83,4 +83,4 @@ It is NOT useful for:
 - generating Rust code from Solidity source code
 - generating Solidity source code from rust code
 
-[`syn-solidity`]: https://docs.rs/syn-solidity/latest/syn_solidity/
+[`linera-alloy-syn-solidity`]: https://docs.rs/linera-alloy-syn-solidity/latest/linera_alloy_syn_solidity/

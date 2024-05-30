@@ -376,12 +376,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [sol-macro] Handle outer attrs in abigen input ([#429](https://github.com/alloy-rs/core/issues/429))
 - [sol-macro] Correctly print Custom types in parameters ([#425](https://github.com/alloy-rs/core/issues/425))
 - [sol-types] Remove `SolType::ENCODED_SIZE` default ([#418](https://github.com/alloy-rs/core/issues/418))
-- [syn-solidity] Raw keyword identifiers ([#415](https://github.com/alloy-rs/core/issues/415))
+- [linera-alloy-syn-solidity] Raw keyword identifiers ([#415](https://github.com/alloy-rs/core/issues/415))
 - Rust keyword conflict ([#405](https://github.com/alloy-rs/core/issues/405))
 - Wrong as_u8 generated for enum ([#413](https://github.com/alloy-rs/core/issues/413))
 - [dyn-abi] Correctly parse strings in `coerce_str` ([#410](https://github.com/alloy-rs/core/issues/410))
 - [dyn-abi] Handle empty hex strings ([#400](https://github.com/alloy-rs/core/issues/400))
-- [syn-solidity] Allow some duplicate attributes ([#399](https://github.com/alloy-rs/core/issues/399))
+- [linera-alloy-syn-solidity] Allow some duplicate attributes ([#399](https://github.com/alloy-rs/core/issues/399))
 - [sol-type-parser] Normalize `u?int` to `u?int256` ([#397](https://github.com/alloy-rs/core/issues/397))
 - Avoid symlinks ([#396](https://github.com/alloy-rs/core/issues/396))
 - [primitives] Signed cleanup ([#395](https://github.com/alloy-rs/core/issues/395))
@@ -393,7 +393,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [docs] Switch incorrect function docs ([#374](https://github.com/alloy-rs/core/issues/374))
 - [sol-macro] Bug fixes ([#372](https://github.com/alloy-rs/core/issues/372))
 - [sol-macro] Correct `SolCall::abi_decode_returns` ([#367](https://github.com/alloy-rs/core/issues/367))
-- [syn-solidity] Struct fields formatting ([#364](https://github.com/alloy-rs/core/issues/364))
+- [linera-alloy-syn-solidity] Struct fields formatting ([#364](https://github.com/alloy-rs/core/issues/364))
 
 ### Features
 
@@ -459,7 +459,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Json-abi not using anonymous when converting to interface ([#342](https://github.com/alloy-rs/core/issues/342))
 - [sol-macro] Remove extra 0x in function docs ([#341](https://github.com/alloy-rs/core/issues/341))
 - [sol-macro] Pass attributes to all generated items ([#340](https://github.com/alloy-rs/core/issues/340))
-- [syn-solidity] Set spans on generated struct names ([#336](https://github.com/alloy-rs/core/issues/336))
+- [linera-alloy-syn-solidity] Set spans on generated struct names ([#336](https://github.com/alloy-rs/core/issues/336))
 - Serde rename resolver to types ([#335](https://github.com/alloy-rs/core/issues/335))
 
 ### Documentation
@@ -473,9 +473,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [json-abi] Deserialize more ContractObjects ([#348](https://github.com/alloy-rs/core/issues/348))
 - [sol-macro] Improve error messages ([#345](https://github.com/alloy-rs/core/issues/345))
 - [sol-types] Introduce `SolValue`, make `Encodable` an impl detail ([#333](https://github.com/alloy-rs/core/issues/333))
-- [syn-solidity] Add even more Display impls ([#339](https://github.com/alloy-rs/core/issues/339))
+- [linera-alloy-syn-solidity] Add even more Display impls ([#339](https://github.com/alloy-rs/core/issues/339))
 - [sol-macro] Improve generated docs ([#338](https://github.com/alloy-rs/core/issues/338))
-- [syn-solidity] Add some more Display impls ([#337](https://github.com/alloy-rs/core/issues/337))
+- [linera-alloy-syn-solidity] Add some more Display impls ([#337](https://github.com/alloy-rs/core/issues/337))
 - Add parsing support for JSON items ([#329](https://github.com/alloy-rs/core/issues/329))
 - Add logs, add log dynamic decoding ([#271](https://github.com/alloy-rs/core/issues/271))
 
@@ -500,14 +500,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Bug Fixes
 
-- [syn-solidity] Test
+- [linera-alloy-syn-solidity] Test
 - [sol-macro] Implement EventTopic for generated enums ([#320](https://github.com/alloy-rs/core/issues/320))
 - Add super import on generated modules ([#307](https://github.com/alloy-rs/core/issues/307))
 - Respect `all_derives = false`, fix custom type printing ([#272](https://github.com/alloy-rs/core/issues/272))
 - Rand default-features typo ([#286](https://github.com/alloy-rs/core/issues/286))
-- [syn-solidity] Parse modifiers without parens ([#284](https://github.com/alloy-rs/core/issues/284))
+- [linera-alloy-syn-solidity] Parse modifiers without parens ([#284](https://github.com/alloy-rs/core/issues/284))
 - Struct `eip712_data_word` ([#258](https://github.com/alloy-rs/core/issues/258))
-- [syn-solidity] Imports ([#252](https://github.com/alloy-rs/core/issues/252))
+- [linera-alloy-syn-solidity] Imports ([#252](https://github.com/alloy-rs/core/issues/252))
 - MSRV tests ([#246](https://github.com/alloy-rs/core/issues/246))
 - Hex compatibility ([#244](https://github.com/alloy-rs/core/issues/244))
 
@@ -529,9 +529,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [sol-macro] Add docs to generated items ([#321](https://github.com/alloy-rs/core/issues/321))
 - [sol-macro] Add support for overloaded events ([#318](https://github.com/alloy-rs/core/issues/318))
-- [syn-solidity] Added visitor hooks for all statements and expressions ([#314](https://github.com/alloy-rs/core/issues/314))
+- [linera-alloy-syn-solidity] Added visitor hooks for all statements and expressions ([#314](https://github.com/alloy-rs/core/issues/314))
 - [sol-macro] Improve type expansion ([#302](https://github.com/alloy-rs/core/issues/302))
-- [syn-solidity] Add more `Spanned` impls ([#301](https://github.com/alloy-rs/core/issues/301))
+- [linera-alloy-syn-solidity] Add more `Spanned` impls ([#301](https://github.com/alloy-rs/core/issues/301))
 - Unsupported message for $idents ([#293](https://github.com/alloy-rs/core/issues/293))
 - [json-abi] Add `Function::signature_full` ([#289](https://github.com/alloy-rs/core/issues/289))
 - [primitives] Add more methods to `Function` ([#290](https://github.com/alloy-rs/core/issues/290))
@@ -545,7 +545,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [sol-macro] Expand getter functions' return types ([#262](https://github.com/alloy-rs/core/issues/262))
 - Add attributes to enum variants ([#264](https://github.com/alloy-rs/core/issues/264))
 - [sol-macro] Expand fields with attrs ([#263](https://github.com/alloy-rs/core/issues/263))
-- [syn-solidity] Improve variable getters generation ([#260](https://github.com/alloy-rs/core/issues/260))
+- [linera-alloy-syn-solidity] Improve variable getters generation ([#260](https://github.com/alloy-rs/core/issues/260))
 - [dyn-abi] Implement more ext traits for json-abi ([#243](https://github.com/alloy-rs/core/issues/243))
 - [sol-macro] Add opt-in attributes for extra methods and derives ([#250](https://github.com/alloy-rs/core/issues/250))
 - [primitives] Allow empty input in hex macros ([#245](https://github.com/alloy-rs/core/issues/245))
@@ -593,7 +593,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Testing
 
-- [syn-solidity] Improve contract tests ([#316](https://github.com/alloy-rs/core/issues/316))
+- [linera-alloy-syn-solidity] Improve contract tests ([#316](https://github.com/alloy-rs/core/issues/316))
 
 ## [0.3.2](https://github.com/alloy-rs/core/releases/tag/v0.3.2) - 2023-08-23
 
@@ -610,7 +610,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implement abi2sol ([#228](https://github.com/alloy-rs/core/issues/228))
 - [primitives] More `FixedBytes<N>` <-> `[u8; N]` conversions ([#239](https://github.com/alloy-rs/core/issues/239))
 - Add support for function input/output encoding/decoding ([#227](https://github.com/alloy-rs/core/issues/227))
-- [syn-solidity] Add statements and expressions ([#199](https://github.com/alloy-rs/core/issues/199))
+- [linera-alloy-syn-solidity] Add statements and expressions ([#199](https://github.com/alloy-rs/core/issues/199))
 - [dyn-abi] Add match functions to value and doc aliases ([#234](https://github.com/alloy-rs/core/issues/234))
 - Function type ([#224](https://github.com/alloy-rs/core/issues/224))
 - [dyn-abi] Allow `T: Into<Cow<str>>` in `eip712_domain!` ([#222](https://github.com/alloy-rs/core/issues/222))
@@ -731,7 +731,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - (u)int tokenization ([#123](https://github.com/alloy-rs/core/issues/123))
 - Add `repr(C)` to json-abi items ([#100](https://github.com/alloy-rs/core/issues/100))
 - Make detokenize infallible ([#86](https://github.com/alloy-rs/core/issues/86))
-- Extra-traits in syn-solidity ([#65](https://github.com/alloy-rs/core/issues/65))
+- Extra-traits in linera-alloy-syn-solidity ([#65](https://github.com/alloy-rs/core/issues/65))
 - Rlp impls ([#56](https://github.com/alloy-rs/core/issues/56))
 - Hex breaking change ([#50](https://github.com/alloy-rs/core/issues/50))
 - Type check int for dirty high bytes ([#47](https://github.com/alloy-rs/core/issues/47))
@@ -787,9 +787,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Issue and PR templates [#33](https://github.com/alloy-rs/core/issues/33) ([#93](https://github.com/alloy-rs/core/issues/93))
 - `sol!` contracts ([#77](https://github.com/alloy-rs/core/issues/77))
 - Abi-json crate ([#78](https://github.com/alloy-rs/core/issues/78))
-- Syn-solidity visitors ([#68](https://github.com/alloy-rs/core/issues/68))
+- linera-alloy-syn-solidity visitors ([#68](https://github.com/alloy-rs/core/issues/68))
 - Abi benchmarks ([#57](https://github.com/alloy-rs/core/issues/57))
-- Move Solidity syn AST to `syn-solidity` ([#63](https://github.com/alloy-rs/core/issues/63))
+- Move Solidity syn AST to `linera-alloy-syn-solidity` ([#63](https://github.com/alloy-rs/core/issues/63))
 - Support function overloading in `sol!` ([#53](https://github.com/alloy-rs/core/issues/53))
 - Primitive utils and improvements ([#52](https://github.com/alloy-rs/core/issues/52))
 - Add PanicKind enum ([#54](https://github.com/alloy-rs/core/issues/54))
@@ -913,7 +913,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [sol-type-parser]: https://crates.io/crates/linera-alloy-sol-type-parser
 [`sol-types`]: https://crates.io/crates/linera-alloy-sol-types
 [sol-types]: https://crates.io/crates/linera-alloy-sol-types
-[`syn-solidity`]: https://crates.io/crates/syn-solidity
-[syn-solidity]: https://crates.io/crates/syn-solidity
+[`linera-alloy-syn-solidity`]: https://crates.io/crates/linera-alloy-syn-solidity
+[linera-alloy-syn-solidity]: https://crates.io/crates/linera-alloy-syn-solidity
 
 <!-- generated by git-cliff -->

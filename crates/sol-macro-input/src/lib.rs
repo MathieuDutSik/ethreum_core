@@ -1,5 +1,5 @@
 //! This crate contains inputs to the `sol!` macro. It sits in-between
-//! the `sol-macro` and `syn-solidity` crates, and contains an intermediate
+//! the `sol-macro` and `linera-alloy-syn-solidity` crates, and contains an intermediate
 //! representation of Solidity items. These items are then expanded into
 //! Rust code by the `linera-alloy-sol-macro` crate.
 //!
@@ -14,7 +14,7 @@
 #![deny(unused_must_use, rust_2018_idioms)]
 #![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
 
-extern crate syn_solidity as ast;
+extern crate linera_alloy_syn_solidity as ast;
 
 /// Tools for working with `#[...]` attributes.
 mod attr;

@@ -29,7 +29,7 @@ This repository contains the following crates:
 - [`linera-alloy-dyn-abi`] - Run-time [ABI] and [EIP-712] implementations
 - [`linera-alloy-json-abi`] - Full Ethereum [JSON-ABI] implementation
 - [`linera-alloy-sol-type-parser`] - A simple parser for Solidity type strings
-- [`syn-solidity`] - [`syn`]-powered Solidity parser
+- [`linera-alloy-syn-solidity`] - [`syn`]-powered Solidity parser
 
 [`linera-alloy-core`]: https://github.com/alloy-rs/core/tree/main/crates/core
 [`linera-alloy-primitives`]: https://github.com/alloy-rs/core/tree/main/crates/primitives
@@ -38,7 +38,7 @@ This repository contains the following crates:
 [`linera-alloy-dyn-abi`]: https://github.com/alloy-rs/core/tree/main/crates/dyn-abi
 [`linera-alloy-json-abi`]: https://github.com/alloy-rs/core/tree/main/crates/json-abi
 [`linera-alloy-sol-type-parser`]: https://github.com/alloy-rs/core/tree/main/crates/sol-type-parser
-[`syn-solidity`]: https://github.com/alloy-rs/core/tree/main/crates/syn-solidity
+[`linera-alloy-syn-solidity`]: https://github.com/alloy-rs/core/tree/main/crates/linera-alloy-syn-solidity
 [JSON-ABI]: https://docs.soliditylang.org/en/latest/abi-spec.html#json
 [ABI]: https://docs.soliditylang.org/en/latest/abi-spec.html
 [EIP-712]: https://eips.ethereum.org/EIPS/eip-712

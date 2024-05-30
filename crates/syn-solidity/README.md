@@ -1,4 +1,4 @@
-# syn-solidity
+# linera-alloy-syn-solidity
 
 [`syn`]-powered parser for Solidity-like [`TokenStream`]s.
 
@@ -16,11 +16,11 @@ This parser is specifically designed for Rust procedural macros. It aims to
 mimic the behavior of the official Solidity compiler (Solc) when it comes to
 parsing valid Solidity code. This means that all valid Solidity code, as
 recognized by Solc v0.5.*[^1] and above, will also be recognized and parsed
-correctly by `syn-solidity`.
+correctly by `linera-alloy-syn-solidity`.
 
-However, `syn-solidity` is more permissive and lenient compared to the official
+However, `linera-alloy-syn-solidity` is more permissive and lenient compared to the official
 Solidity compiler and grammar specifications. Some examples of code patterns
-that are valid in `syn-solidity` but not in the official compiler include:
+that are valid in `linera-alloy-syn-solidity` but not in the official compiler include:
 - identifiers are Rust identifiers (`syn::Ident`), and as such cannot contain
   the dollar sign (`$`), but can contain unicode characters
 - trailing punctuation, like commas (`,`) in function arguments or enums
@@ -55,7 +55,7 @@ correctly most of the time. You can see a few examples of Solidity code that
 parses correctly (after some very light patching) in the [tests] directory.
 
 [reserved-2021]: https://doc.rust-lang.org/edition-guide/rust-2021/reserving-syntax.html
-[tests]: https://github.com/alloy-rs/core/tree/main/crates/syn-solidity/tests/contracts
+[tests]: https://github.com/alloy-rs/core/tree/main/crates/linera-alloy-syn-solidity/tests/contracts
 
 ## Examples
 
@@ -63,7 +63,7 @@ Basic usage:
 
 ```rust
 use quote::quote;
-use syn_solidity::{Expr, File, Item, Lit, Stmt};
+use linera_alloy_syn_solidity::{Expr, File, Item, Lit, Stmt};
 
 // Create a Solidity `TokenStream`
 let tokens = quote! {
@@ -78,7 +78,7 @@ let tokens = quote! {
 };
 
 // Parse the tokens into a `File`
-let ast: File = syn_solidity::parse2(tokens)?;
+let ast: File = linera_alloy_syn_solidity::parse2(tokens)?;
 
 let items: &[Item] = &ast.items;
 let Some(Item::Contract(contract)) = items.first() else {

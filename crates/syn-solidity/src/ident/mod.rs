@@ -148,7 +148,7 @@ impl SolIdent {
 
 fn check_dollar(input: ParseStream<'_>) -> Result<()> {
     if input.peek(Token![$]) {
-        Err(input.error("Solidity identifiers starting with `$` are unsupported. This is a known limitation of syn-solidity."))
+        Err(input.error("Solidity identifiers starting with `$` are unsupported. This is a known limitation of linera-alloy-syn-solidity."))
     } else {
         Ok(())
     }
