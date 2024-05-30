@@ -36,5 +36,10 @@ git init "$REGISTRY"/index || true
 while read LINE; do
     ARGS=($LINE)
     CRATE="${ARGS[0]}"
-    cargo index add --index "$REGISTRY"/index --upload "$REGISTRY" --index-url local --manifest-path "$CRATE"/Cargo.toml -- -p $LINE
+    CRATE_RED="${CRATE:12}$"
+    CRATE_PATH="crates/$CRATE_RED"
+    echo "CRATE=$CRATE"
+    echo "CRATE_RED=$CRATE_RED"
+    echo "CRATE_PATH=$CRATE_PATH"
+    cargo index add --index "$REGISTRY"/index --upload "$REGISTRY" --index-url local --manifest-path "$CRATE_PATH"/Cargo.toml -- -p $LINE
 done
