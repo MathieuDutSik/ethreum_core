@@ -4,8 +4,8 @@
 linera-alloy-primitives
 linera-alloy-sol-type-parser
 linera-alloy-json-abi
-linera-alloy-sol-macro-input
 linera-alloy-syn-solidity
+linera-alloy-sol-macro-input
 linera-alloy-sol-macro-expander
 linera-alloy-sol-macro
 linera-alloy-sol-types
